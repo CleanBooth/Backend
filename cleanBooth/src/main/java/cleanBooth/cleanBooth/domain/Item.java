@@ -25,14 +25,14 @@ public class Item {
     private int price;
     private String image;
 
-    @Enumerated(EnumType.STRING)
-    private Enum<NewStatus> isNew;
+    //@Enumerated(EnumType.STRING)
+    //private Enum<NewStatus> isNew;
 
-    @Enumerated(EnumType.STRING)
-    private Enum<TestingStatus> isTesting;
+    //@Enumerated(EnumType.STRING)
+    //private Enum<TestingStatus> isTesting;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private List<ItemCategory> itemCategories = new ArrayList<>();
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //private List<ItemCategory> itemCategories = new ArrayList<>();
 
     private Float testerRate;
     private String orderLink;
