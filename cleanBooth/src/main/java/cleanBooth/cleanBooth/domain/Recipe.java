@@ -25,7 +25,7 @@ public class Recipe {
     private String writer;
 
     @Enumerated(EnumType.STRING)
-    private Enum<Site> site;
+    private Site site;
 
     @OneToMany(mappedBy = "RecipeCategory")
     private List<Recipe_RecipeCategory> recipe_recipeCategories = new ArrayList<>();
