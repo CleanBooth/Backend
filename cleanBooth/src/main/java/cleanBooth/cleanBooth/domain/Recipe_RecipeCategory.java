@@ -15,9 +15,9 @@ public class Recipe_RecipeCategory {
     @Column(name = "RECIPE_RECIPECATEGORY")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "recipe_recipeCategory")
     private List<RecipeCategory> recipeCategories = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "recipe_recipeCategory")
     private List<Recipe> recipes = new ArrayList<>();
 }

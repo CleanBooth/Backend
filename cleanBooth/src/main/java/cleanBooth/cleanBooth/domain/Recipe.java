@@ -27,8 +27,8 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private Site site;
 
-    @OneToMany(mappedBy = "RecipeCategory")
-    private List<Recipe_RecipeCategory> recipe_recipeCategories = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Recipe_RecipeCategory recipe_recipeCategory;
 
 
 }

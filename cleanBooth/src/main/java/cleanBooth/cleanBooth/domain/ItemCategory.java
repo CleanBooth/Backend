@@ -15,8 +15,8 @@ public class ItemCategory {
     @Column(name = "ITEM_CATEGORY_ID")
     private Long id;
 
-    //@OneToMany(mappedBy = "itemCategory")
-    //private List<Item> items = new ArrayList<>();
+    @OneToMany(mappedBy = "itemCategory")
+    private List<Item> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "itemCategory")
     private List<Category> categories = new ArrayList<>();
