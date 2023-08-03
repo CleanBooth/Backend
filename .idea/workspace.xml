@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="fetch: RecipeService 추가&#10;update: recipe 엔티티 변경사항 적용" />
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="git commit">
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691068134508</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="git commit">
+      <created>1691068266211</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691068266211</updated>
+    </task>
+    <task id="LOCAL-00007" summary="git commit">
+      <created>1691068316452</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691068316452</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,7 +155,8 @@
     <MESSAGE value="test: 커밋 테스트" />
     <MESSAGE value="feat:클린레시피 카테고리 엔티티 추가&#10;update: 클린레시피 엔티티 업데이트" />
     <MESSAGE value="fetch: RecipeService 추가&#10;update: recipe 엔티티 변경사항 적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="fetch: RecipeService 추가&#10;update: recipe 엔티티 변경사항 적용" />
+    <MESSAGE value="git commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="git commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
