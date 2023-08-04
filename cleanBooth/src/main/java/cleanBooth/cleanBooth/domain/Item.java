@@ -16,6 +16,7 @@ public class Item {
     private Long id;
 
     private String name;
+    private String brandName;
     private TextField description;
     private Nutrient nutrient;
 
