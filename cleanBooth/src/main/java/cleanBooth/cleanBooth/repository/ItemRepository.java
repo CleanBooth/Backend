@@ -29,12 +29,4 @@ public class ItemRepository {
         return em.createQuery("select m from Item m", Item.class).getResultList();
     }
 
-    public List<Item> findByCategory(Category category){
-        String search = category.toString();
-        return em.createQuery("select m from Item m " +
-                "where ItemCategory = 'search' ", Item.class).getResultList();
-    }
-
-
-
 }

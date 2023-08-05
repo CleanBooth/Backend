@@ -16,6 +16,7 @@ public class Item {
     private Long id;
 
     private String name;
+    private String brandName;
     private TextField description;
     private Nutrient nutrient;
 
@@ -25,14 +26,14 @@ public class Item {
     private int price;
     private String image;
 
-    //@Enumerated(EnumType.STRING)
-    //private Enum<NewStatus> isNew;
+    @Enumerated(EnumType.STRING)
+    private NewStatus isNew;
 
-    //@Enumerated(EnumType.STRING)
-    //private Enum<TestingStatus> isTesting;
+    @Enumerated(EnumType.STRING)
+    private TestingStatus isTesting;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //private List<ItemCategory> itemCategories = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ItemCategory itemCategory;
 
     private Float testerRate;
     private String orderLink;

@@ -1,0 +1,36 @@
+2023-08-03 14:30:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+
+    drop table if exists user cascade  [42001-214]
+2023-08-03 14:30:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table [*]user (\000a        user_id bigint not null,\000a        primary key (user_id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table user (
+        user_id bigint not null,
+        primary key (user_id)
+    ) [42001-214]
+2023-08-03 14:30:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    alter table if exists review \000a       add constraint FK5bhefci502sd63299f0mw09t7 \000a       foreign key (user_user_id) \000a       references [*]user"; expected "identifier"; SQL statement:
+
+    alter table if exists review 
+       add constraint FK5bhefci502sd63299f0mw09t7 
+       foreign key (user_user_id) 
+       references user [42001-214]
+2023-08-03 14:31:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+
+    drop table if exists user cascade  [42001-214]
+2023-08-03 14:31:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table [*]user (\000a        user_id bigint not null,\000a        primary key (user_id)\000a    )"; expected "identifier"; SQL statement:
+
+    create table user (
+        user_id bigint not null,
+        primary key (user_id)
+    ) [42001-214]
+2023-08-03 14:31:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    alter table if exists review \000a       add constraint FK5bhefci502sd63299f0mw09t7 \000a       foreign key (user_user_id) \000a       references [*]user"; expected "identifier"; SQL statement:
+
+    alter table if exists review 
+       add constraint FK5bhefci502sd63299f0mw09t7 
+       foreign key (user_user_id) 
+       references user [42001-214]

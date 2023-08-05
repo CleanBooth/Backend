@@ -17,7 +17,7 @@ public class RecipeCategory {
 
     private String name;
 
-    @OneToMany(mappedBy = "RecipeCategory")
-    private List<Recipe_RecipeCategory> RecipeCategory = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Recipe_RecipeCategory recipe_recipeCategory;
 
 }
