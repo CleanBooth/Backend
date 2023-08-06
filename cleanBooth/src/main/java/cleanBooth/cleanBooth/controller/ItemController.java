@@ -1,14 +1,24 @@
 package cleanBooth.cleanBooth.controller;
 
+import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class ItemController {
 
     private final ItemService itemService;
+
+    @GetMapping("/item/{id}")
+    public ItemDto myItem(@PathVariable("id") Long id){
+        Item foundItem = itemService.findOne(id);
+        ItemDto itemDto = new ItemDto(foundItem);
+        return itemDto;
+    }
 
 }

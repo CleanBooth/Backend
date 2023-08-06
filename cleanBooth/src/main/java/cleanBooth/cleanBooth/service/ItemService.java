@@ -19,8 +19,8 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    public Item findOne(Item item){
-        return itemRepository.find(item.getId());
+    public Item findOne(Long id){
+        return itemRepository.find(id);
     }
 
     public List<Item> findItems(){
