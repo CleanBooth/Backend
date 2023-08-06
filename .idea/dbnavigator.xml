@@ -34,39 +34,36 @@
       <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
     </connection>
     <connection id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968">
-      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[--insert into recipe (recipe_id, name, style, ingredients, link, writer)
---    value (2, '이름2', '스타일2', '재료2', '링크2', '작성자2')
-
---insert into recipe (
---    recipe_id,
---    ingredients,
---    link,
---    name,
---    recipe_recipe_category_recipe_recipecategory,
---    site,
---    style,
---    writer)
---values (2, '재료2', '링크2', '이름2', null ,1, '스타일2', '작성자2')
---;
-
-select
-    r.ingredients,
-    r.link,
-    r.name,
-    r.recipe_id,
-    r.recipe_recipe_category_recipe_recipecategory,
-    r.site,
-    r.style,
-    r.writer
-from
-    recipe r;]]></console>
+      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[--insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (1, 'Creme De Menthe Green', 'Epoxy Flooring', 'Jaxbean', 'xing.com', 'Shaylynn', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (2, 'Basil - Thai', 'Termite Control', 'Yakitri', 'zimbio.com', 'Willamina', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (3, 'Wine - Cotes Du Rhone Parallele', 'Drywall & Acoustical (MOB)', 'Feedmix', 'bandcamp.com', 'Hastie',1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (4, 'Arctic Char - Fillets', 'Fire Protection', 'Kamba', 'creativecommons.org', 'Krishna', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (5, 'Tart Shells - Sweet, 4', 'Rebar & Wire Mesh Install', 'Photospace', 'ucoz.ru', 'Mahalia', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (6, 'Chocolate - Pistoles, White', 'Prefabricated Aluminum Metal Canopies', 'Buzzster', 'yellowbook.com', 'Bertie', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (7, 'Currants', 'Drilled Shafts', 'Dazzlesphere', 'sciencedaily.com', 'Iormina', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (8, 'Flour - Strong Pizza', 'Epoxy Flooring', 'Quamba', 'twitter.com', 'Kim', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (9, 'Wine - Chateau Aqueria Tavel', 'HVAC', 'Mudo', 'home.pl', 'Ardelia', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (10, 'Bacardi Breezer - Tropical', 'Electrical', 'Skilith', 'g.co', 'Marlin', 1);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (11, 'Wine - Duboeuf Beaujolais', 'Framing (Wood)', 'Feedfire', 'nbcnews.com', 'Mandy', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (12, 'Strawberries - California', 'Prefabricated Aluminum Metal Canopies', 'Wikizz', 'japanpost.jp', 'Jae', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (13, 'Carbonated Water - Lemon Lime', 'Glass & Glazing', 'Youopia', 'nba.com', 'Catina', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (14, 'Rum - White, Gg White', 'Doors, Frames & Hardware', 'Flashpoint', 'unblog.fr', 'Avigdor', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (15, 'Pepper - Paprika, Hungarian', 'Marlite Panels (FED)', 'Jaxworks', 'google.fr', 'Sayres', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (16, 'Chilli Paste, Sambal Oelek', 'Structural & Misc Steel Erection', 'Shufflester', 'fc2.com', 'Winona', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (17, 'Lentils - Green, Dry', 'Asphalt Paving', 'Realcube', 'jalbum.net', 'Conrado', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (18, 'Honey - Lavender', 'Doors, Frames & Hardware', 'Zoonoodle', 'twitpic.com', 'Alfie', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (19, 'Water Chestnut - Canned', 'Fire Sprinkler System', 'Riffwire', 'twitter.com', 'Bambi', 2);
+insert into recipe (recipe_id, name, style, ingredients, link, writer, site) values (20, 'Tea - English Breakfast', 'Temp Fencing, Decorative Fencing and Gates', 'Oba', 'google.com', 'Ada', 2);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968" object-ref="schemas/cleanTest_DB/tables/recipe" />
+      <object connection-id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968" object-ref="schemas/cleanTest_DB/tables/recipe_category" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968" dataset="cleanTest_DB.review" active-filter-id="" />
@@ -658,23 +655,23 @@ from
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968/consoles/clean_db">
-        <variable name=":recipe_id1" dataType="LITERAL" values="" />
         <variable name=":recipe_id" dataType="LITERAL" values="" />
-        <variable name=":site" dataType="LITERAL" values="" />
-        <variable name=":ingredients1" dataType="LITERAL" values="재료1, " />
-        <variable name=":link1" dataType="LITERAL" values="링크1, " />
+        <variable name=":style" dataType="LITERAL" values="" />
         <variable name=":writer" dataType="LITERAL" values="" />
         <variable name=":link" dataType="LITERAL" values="" />
-        <variable name=":ingredients" dataType="LITERAL" values="" />
-        <variable name=":name" dataType="LITERAL" values="" />
-        <variable name=":name1" dataType="LITERAL" values="이름1, " />
+        <variable name=":writer1" dataType="LITERAL" values="작성자1, " />
+        <variable name=":site" dataType="LITERAL" values="" />
         <variable name=":recipe_recipe_category_recipe_recipecategory1" dataType="LITERAL" values="1, 카테고리1, " />
         <variable name=":style1" dataType="LITERAL" values="스타일1, " />
-        <variable name=":1" dataType="NUMERIC" values="1, " />
-        <variable name=":style" dataType="LITERAL" values="" />
-        <variable name=":writer1" dataType="LITERAL" values="작성자1, " />
-        <variable name=":recipe_recipe_category_recipe_recipecategory" dataType="LITERAL" values="" />
         <variable name=":site1" dataType="LITERAL" values="1, 사이트1, " />
+        <variable name=":recipe_id1" dataType="LITERAL" values="" />
+        <variable name=":name" dataType="LITERAL" values="" />
+        <variable name=":ingredients1" dataType="LITERAL" values="재료1, " />
+        <variable name=":link1" dataType="LITERAL" values="링크1, " />
+        <variable name=":1" dataType="NUMERIC" values="1, " />
+        <variable name=":recipe_recipe_category_recipe_recipecategory" dataType="LITERAL" values="" />
+        <variable name=":ingredients" dataType="LITERAL" values="" />
+        <variable name=":name1" dataType="LITERAL" values="이름1, " />
       </file>
     </execution-variables>
   </component>
