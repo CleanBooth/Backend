@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="fetch: Recipe 패키지 생성 및 파일 이동">
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="fetch: recipe db 더미데이터 20개 추가">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -243,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691317576659</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fetch: recipe db 더미데이터 20개 추가">
+      <created>1691319689910</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1691319689910</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +283,8 @@
     <MESSAGE value="git commit" />
     <MESSAGE value="git 버그 수정" />
     <MESSAGE value="fetch: Recipe 패키지 생성 및 파일 이동" />
-    <option name="LAST_COMMIT_MESSAGE" value="fetch: Recipe 패키지 생성 및 파일 이동" />
+    <MESSAGE value="fetch: recipe db 더미데이터 20개 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="fetch: recipe db 더미데이터 20개 추가" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
