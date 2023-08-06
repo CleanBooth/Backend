@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="git 버그 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-08-03__10_07__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-08-03__10_07__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="git 버그 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -210,7 +205,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691159588012</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="git 버그 수정">
+      <created>1691295779308</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1691295779308</updated>
+    </task>
+    <task id="LOCAL-00015" summary="git 버그 수정">
+      <created>1691295826549</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1691295826549</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +250,8 @@
     <MESSAGE value="feat:클린레시피 카테고리 엔티티 추가&#10;update: 클린레시피 엔티티 업데이트" />
     <MESSAGE value="fetch: RecipeService 추가&#10;update: recipe 엔티티 변경사항 적용" />
     <MESSAGE value="git commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="git commit" />
+    <MESSAGE value="git 버그 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="git 버그 수정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
