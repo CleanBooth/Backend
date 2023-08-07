@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="fetch: recipe db 더미데이터 20개 추가">
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="fetch: Recipe 패키지 생성 및 파일 이동">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +66,6 @@
         <option name="url" value="https://github.com/CleanBooth/Backend.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -251,21 +243,7 @@
       <option name="project" value="LOCAL" />
       <updated>1691317576659</updated>
     </task>
-    <task id="LOCAL-00019" summary="fetch: recipe db 더미데이터 20개 추가">
-      <created>1691319689910</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1691319689910</updated>
-    </task>
-    <task id="LOCAL-00020" summary="fetch: recipe db 더미데이터 20개 추가">
-      <created>1691326855462</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1691326855462</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,8 +276,7 @@
     <MESSAGE value="git commit" />
     <MESSAGE value="git 버그 수정" />
     <MESSAGE value="fetch: Recipe 패키지 생성 및 파일 이동" />
-    <MESSAGE value="fetch: recipe db 더미데이터 20개 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="fetch: recipe db 더미데이터 20개 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="fetch: Recipe 패키지 생성 및 파일 이동" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
