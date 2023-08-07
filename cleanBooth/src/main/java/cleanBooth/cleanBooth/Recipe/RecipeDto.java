@@ -13,7 +13,7 @@ public class RecipeDto {
     private String name;
     private String style;
     private String ingredients;
-    private URL link;
+    private String link;
     private String writer;
     private Site site;
 

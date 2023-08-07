@@ -2,6 +2,7 @@ package cleanBooth.cleanBooth.Recipe;
 
 import cleanBooth.cleanBooth.domain.Recipe;
 import cleanBooth.cleanBooth.repository.RecipeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recipe")
+@RequiredArgsConstructor
 public class RecipeController {
 
     @Autowired
@@ -29,21 +31,21 @@ public class RecipeController {
     }
 
     @GetMapping("/{recipeId}")
-    public String Recipe(@PathVariable long recipeId, Model model){
+    public Recipe Recipe(@PathVariable long recipeId, Model model){
         Recipe recipe = recipeRepository.findByID(recipeId);
         model.addAttribute("recipe", recipe);
 
-        return "basic/recipe"; //html
+        return recipe;
     }
 
-    @GetMapping("/{style}")
+    @GetMapping("/style/{style}")
     public List<Recipe> findRecipeByStyle(@PathVariable String style){
         List<Recipe> resultList = recipeRepository.findByStyle(style);
 
         return resultList;
     }
 
-    @GetMapping("/{site}")
+    @GetMapping("/site/{site}")
     public List<Recipe> findRecipeBySite(@PathVariable String site){
         List<Recipe> resultList = recipeRepository.findBySite(site);
 

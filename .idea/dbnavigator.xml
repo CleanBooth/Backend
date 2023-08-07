@@ -665,23 +665,23 @@ select * from recipe_category]]></console>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables>
       <file file-url="db://a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968/consoles/clean_db">
-        <variable name=":link1" dataType="LITERAL" values="링크1, " />
-        <variable name=":site" dataType="LITERAL" values="" />
-        <variable name=":ingredients" dataType="LITERAL" values="" />
-        <variable name=":name1" dataType="LITERAL" values="이름1, " />
         <variable name=":1" dataType="NUMERIC" values="1, " />
-        <variable name=":name" dataType="LITERAL" values="" />
-        <variable name=":recipe_recipe_category_recipe_recipecategory" dataType="LITERAL" values="" />
-        <variable name=":style1" dataType="LITERAL" values="스타일1, " />
-        <variable name=":writer1" dataType="LITERAL" values="작성자1, " />
-        <variable name=":link" dataType="LITERAL" values="" />
-        <variable name=":writer" dataType="LITERAL" values="" />
+        <variable name=":name1" dataType="LITERAL" values="이름1, " />
         <variable name=":recipe_id" dataType="LITERAL" values="" />
+        <variable name=":site" dataType="LITERAL" values="" />
+        <variable name=":writer1" dataType="LITERAL" values="작성자1, " />
+        <variable name=":ingredients" dataType="LITERAL" values="" />
+        <variable name=":style1" dataType="LITERAL" values="스타일1, " />
         <variable name=":site1" dataType="LITERAL" values="1, 사이트1, " />
-        <variable name=":recipe_id1" dataType="LITERAL" values="" />
+        <variable name=":name" dataType="LITERAL" values="" />
+        <variable name=":link1" dataType="LITERAL" values="링크1, " />
+        <variable name=":link" dataType="LITERAL" values="" />
         <variable name=":ingredients1" dataType="LITERAL" values="재료1, " />
-        <variable name=":recipe_recipe_category_recipe_recipecategory1" dataType="LITERAL" values="1, 카테고리1, " />
         <variable name=":style" dataType="LITERAL" values="" />
+        <variable name=":recipe_recipe_category_recipe_recipecategory1" dataType="LITERAL" values="1, 카테고리1, " />
+        <variable name=":recipe_recipe_category_recipe_recipecategory" dataType="LITERAL" values="" />
+        <variable name=":writer" dataType="LITERAL" values="" />
+        <variable name=":recipe_id1" dataType="LITERAL" values="" />
       </file>
     </execution-variables>
   </component>

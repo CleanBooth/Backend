@@ -3,6 +3,7 @@ package cleanBooth.cleanBooth.repository;
 import cleanBooth.cleanBooth.domain.Recipe;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequiredArgsConstructor
 public class RecipeRepository {
 
+    @Autowired
     private EntityManager entityManager;
     private AtomicLong atomic = new AtomicLong();
 
@@ -29,12 +31,12 @@ public class RecipeRepository {
 
     //전체 recipe return
     public List<Recipe> findAll(){
-        return entityManager.createQuery("select m from Memeber m", Recipe.class).getResultList();
+        return entityManager.createQuery("select r from Recipe r", Recipe.class).getResultList();
     }
 
     //스타일별 recipe return
     public List<Recipe> findByStyle(String style){
-        String SQL = "SELECT r FROM Recipe WHERE style == " + style;
+        String SQL = "SELECT r FROM recipe WHERE style == " + style;
         return entityManager.createQuery(SQL, Recipe.class).getResultList();
     }
 
@@ -42,7 +44,7 @@ public class RecipeRepository {
     public List<Recipe> findBySite(String site){
         List<Recipe> listRecipe = new ArrayList<>();
         if(site.equals("Youtube")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'Youtube'";
+            String SQL = "SELECT r FROM recipe WHERE site == 'Youtube'";
             try{
                 listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
             }
@@ -54,7 +56,7 @@ public class RecipeRepository {
 
         }
         else if(site.equals("blog")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'blog'";
+            String SQL = "SELECT r FROM recipe WHERE site == 'blog'";
             try{
                 listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
             }

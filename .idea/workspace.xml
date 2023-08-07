@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: git pull">
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: recipe_category 실 데이터 추가&#10;feat: RecipeController 추가">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -259,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691379211064</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="update: recipe_category 실 데이터 추가&#10;feat: RecipeController 추가">
+      <created>1691383659083</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1691383659084</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,7 +303,8 @@
     <MESSAGE value="fetch: Recipe 패키지 생성 및 파일 이동" />
     <MESSAGE value="update: recipe dto 오류 해결" />
     <MESSAGE value="update: git pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: git pull" />
+    <MESSAGE value="update: recipe_category 실 데이터 추가&#10;feat: RecipeController 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: recipe_category 실 데이터 추가&#10;feat: RecipeController 추가" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

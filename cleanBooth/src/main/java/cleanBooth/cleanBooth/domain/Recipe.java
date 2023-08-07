@@ -20,7 +20,7 @@ public class Recipe {
     private String style;
     private String ingredients;
 
-    private URL link;
+    private String link;
 
     private String writer;
 
