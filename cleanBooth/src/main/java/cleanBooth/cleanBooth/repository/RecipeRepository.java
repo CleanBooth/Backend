@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Recipe;
+package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.domain.Recipe;
 import jakarta.persistence.EntityManager;

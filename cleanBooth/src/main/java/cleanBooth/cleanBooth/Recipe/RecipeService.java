@@ -2,6 +2,7 @@ package cleanBooth.cleanBooth.Recipe;
 
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
