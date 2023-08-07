@@ -2,12 +2,12 @@ package cleanBooth.cleanBooth.service;
 
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.repository.ItemRepository;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -19,8 +19,8 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    public Item findOne(Long id){
-        return itemRepository.find(id);
+    public Optional<Item> findOneById(Long id){
+        return itemRepository.findById(id);
     }
 
     public List<Item> findItems(){
