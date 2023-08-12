@@ -1,7 +1,9 @@
-package cleanBooth.cleanBooth.Recipe;
+package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.Site;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,51 +15,40 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequiredArgsConstructor
 public class RecipeRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
     private AtomicLong atomic = new AtomicLong();
 
+    //recipe 저장
     public void save(Recipe recipe){
         recipe.setId(atomic.incrementAndGet());
         entityManager.persist(recipe);
     }
 
+    //ID 기준 recipe return
     public Recipe findByID(Long id){
         return entityManager.find(Recipe.class, id);
     }
 
+    //전체 recipe return
     public List<Recipe> findAll(){
         return entityManager.createQuery("select m from Memeber m", Recipe.class).getResultList();
     }
 
+    //스타일별 recipe return
     public List<Recipe> findByStyle(String style){
         String SQL = "SELECT r FROM Recipe WHERE style == " + style;
         return entityManager.createQuery(SQL, Recipe.class).getResultList();
     }
 
-    public List<Recipe> findBySite(String site){
-        List<Recipe> listRecipe = new ArrayList<>();
-        if(site.equals("Youtube")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'Youtube'";
-            try{
-                listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+    //site의 writer 기준으로 recipe return
+    public List<String> findBySite(Site site){
+        String hql = "select r.writer from Recipe r where r.site = :site";
+        TypedQuery<String> query = entityManager.createQuery(hql, String.class);
+        query.setParameter("site", site);
 
-            return listRecipe;
+        List<String> writers = query.getResultList();
 
-        }
-        else if(site.equals("blog")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'blog'";
-            try{
-                listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        return listRecipe;
+        return writers;
     }
 
     //    public void update(Long id, Recipe recipe){
@@ -68,6 +59,8 @@ public class RecipeRepository {
 //        findRecipe.setStyle(recipe.getStyle());
 //        findRecipe.setWriter(recipe.getWriter());
 //    }
+
+    // recipe 삭제
     public void remove(Long id){
         entityManager.remove(id);
     }

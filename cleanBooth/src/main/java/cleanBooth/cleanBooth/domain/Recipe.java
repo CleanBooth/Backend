@@ -20,7 +20,7 @@ public class Recipe {
     private String style;
     private String ingredients;
 
-    private URL link;
+    private String link;
 
     private String writer;
 
@@ -28,7 +28,7 @@ public class Recipe {
     private Site site;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Recipe_RecipeCategory recipe_recipeCategory;
+    private RecipeWriter recipeWriter;
 
 
 }

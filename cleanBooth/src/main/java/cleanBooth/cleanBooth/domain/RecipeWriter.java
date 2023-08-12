@@ -9,14 +9,16 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class RecipeCategory {
+public class RecipeWriter {
 
-    @Id @GeneratedValue
-    @Column(name = "RECIPE_CATEGORY_ID")
+    @Id
+    @GeneratedValue
+    @Column(name = "WRITER_ID")
     private Long id;
 
     private String name;
+    private String link;
 
-
-
+    @OneToMany(mappedBy = "recipeWriter")
+    private List<Recipe> recipeList = new ArrayList<>();
 }
