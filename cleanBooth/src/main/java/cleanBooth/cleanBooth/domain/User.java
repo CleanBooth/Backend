@@ -1,15 +1,14 @@
 package cleanBooth.cleanBooth.domain;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
     @Id @GeneratedValue
     @Column(name = "USER_ID")

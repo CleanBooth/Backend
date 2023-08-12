@@ -1,6 +1,7 @@
 package cleanBooth.cleanBooth.Recipe;
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.Site;
 import cleanBooth.cleanBooth.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -36,15 +37,15 @@ public class RecipeController {
         return "basic/recipe"; //html
     }
 
-    @GetMapping("/{style}")
+    @GetMapping("/style/{style}")
     public List<Recipe> findRecipeByStyle(@PathVariable String style){
         List<Recipe> resultList = recipeRepository.findByStyle(style);
 
         return resultList;
     }
 
-    @GetMapping("/{site}")
-    public List<Recipe> findRecipeBySite(@PathVariable String site){
+    @GetMapping("/site/{site}")
+    public List<Recipe> findRecipeBySite(@PathVariable Site site){
         List<Recipe> resultList = recipeRepository.findBySite(site);
 
         return resultList;

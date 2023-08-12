@@ -1,7 +1,9 @@
 package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.Site;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequiredArgsConstructor
 public class RecipeRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
     private AtomicLong atomic = new AtomicLong();
 
     //recipe 저장
@@ -39,30 +41,14 @@ public class RecipeRepository {
     }
 
     //site 기준으로 recipe return
-    public List<Recipe> findBySite(String site){
-        List<Recipe> listRecipe = new ArrayList<>();
-        if(site.equals("Youtube")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'Youtube'";
-            try{
-                listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+    public List<Recipe> findBySite(Site site){
+        String hql = "select r from Recipe r where r.site = :site";
+        TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
+        query.setParameter("site", site);
 
-            return listRecipe;
+        List<Recipe> recipes = query.getResultList();
 
-        }
-        else if(site.equals("blog")){
-            String SQL = "SELECT r FROM Recipe WHERE site == 'blog'";
-            try{
-                listRecipe = entityManager.createQuery(SQL, Recipe.class).getResultList();
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        return listRecipe;
+        return recipes;
     }
 
     //    public void update(Long id, Recipe recipe){

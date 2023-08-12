@@ -2,6 +2,7 @@ package cleanBooth.cleanBooth.Recipe;
 
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.Site;
 import cleanBooth.cleanBooth.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class RecipeService {
         return resultList;
     }
 
-    public List<Recipe> findRecipeBySite(@PathVariable String site){
+    public List<Recipe> findRecipeBySite(@PathVariable Site site){
         List<Recipe> resultList = recipeRepository.findBySite(site);
 
         return resultList;
