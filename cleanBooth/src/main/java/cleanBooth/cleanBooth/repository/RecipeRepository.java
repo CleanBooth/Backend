@@ -40,15 +40,15 @@ public class RecipeRepository {
         return entityManager.createQuery(SQL, Recipe.class).getResultList();
     }
 
-    //site 기준으로 recipe return
-    public List<Recipe> findBySite(Site site){
-        String hql = "select r from Recipe r where r.site = :site";
-        TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
+    //site의 writer 기준으로 recipe return
+    public List<String> findBySite(Site site){
+        String hql = "select r.writer from Recipe r where r.site = :site";
+        TypedQuery<String> query = entityManager.createQuery(hql, String.class);
         query.setParameter("site", site);
 
-        List<Recipe> recipes = query.getResultList();
+        List<String> writers = query.getResultList();
 
-        return recipes;
+        return writers;
     }
 
     //    public void update(Long id, Recipe recipe){

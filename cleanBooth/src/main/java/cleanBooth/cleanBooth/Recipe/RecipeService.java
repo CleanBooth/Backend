@@ -37,8 +37,8 @@ public class RecipeService {
         return resultList;
     }
 
-    public List<Recipe> findRecipeBySite(@PathVariable Site site){
-        List<Recipe> resultList = recipeRepository.findBySite(site);
+    public List<String> findRecipeBySite(@PathVariable Site site){
+        List<String> resultList = recipeRepository.findBySite(site);
 
         return resultList;
     }
