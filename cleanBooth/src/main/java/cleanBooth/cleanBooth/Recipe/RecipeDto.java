@@ -7,23 +7,27 @@ import lombok.Setter;
 
 
 import java.net.URL;
+import java.util.List;
+
 @Getter @Setter
 public class RecipeDto {
 
     private String name;
-    private String style;
+    private String styles;
     private String ingredients;
     private String link;
-    private String writer;
     private Site site;
+    private String videoTitle;
+    private Boolean isLike;
 
     public RecipeDto(Recipe recipe){
         this.name = recipe.getName();
-        this.style = recipe.getStyle();
+        this.styles = recipe.getStyles();
         this.ingredients = recipe.getIngredients();
         this.link = recipe.getLink();
-        this.writer = recipe.getWriter();
         this.site = recipe.getSite();
+        this.videoTitle = recipe.getVideoTitle();
+        this.isLike = recipe.getIsLike();
     }
 
 }

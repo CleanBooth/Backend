@@ -1,8 +1,10 @@
 package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.RecipeWriter;
 import cleanBooth.cleanBooth.domain.Site;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -31,13 +33,30 @@ public class RecipeRepository {
 
     //전체 recipe return
     public List<Recipe> findAll(){
-        return entityManager.createQuery("select m from Memeber m", Recipe.class).getResultList();
+        return entityManager.createQuery("select m from Recipe m", Recipe.class).getResultList();
     }
 
     //스타일별 recipe return
     public List<Recipe> findByStyle(String style){
         String SQL = "SELECT r FROM Recipe WHERE style == " + style;
         return entityManager.createQuery(SQL, Recipe.class).getResultList();
+    }
+
+    public List<Recipe> findByStyle(List<String> styles){
+        String queryString = "SELECT r FROM Recipe r WHERE ";
+        for (int i = 0; i < styles.size(); i++) {
+            queryString += "r.styles LIKE :style" + i;
+            if (i < styles.size() - 1) {
+                queryString += " AND ";
+            }
+        }
+
+        Query query = entityManager.createQuery(queryString, Recipe.class);
+        for (int i = 0; i < styles.size(); i++) {
+            query.setParameter("style" + i, "%" + styles.get(i) + "%");
+        }
+
+        return query.getResultList();
     }
 
     //site의 writer 기준으로 recipe return
@@ -51,14 +70,25 @@ public class RecipeRepository {
         return writers;
     }
 
-    //    public void update(Long id, Recipe recipe){
-//        Recipe findRecipe = findByID(id);
-//        findRecipe.setName(recipe.getName());
-//        findRecipe.setLink(recipe.getLink());
-//        findRecipe.setSite(recipe.getSite());
-//        findRecipe.setStyle(recipe.getStyle());
-//        findRecipe.setWriter(recipe.getWriter());
-//    }
+    public List<RecipeWriter> getWriterExp(String writer_name){
+        String hql = "select w from RecipeWriter w where w.name = :writer_name";
+        TypedQuery<RecipeWriter> query = entityManager.createQuery(hql, RecipeWriter.class);
+        query.setParameter("writer_name", writer_name);
+
+        List<RecipeWriter> writerList = query.getResultList();
+
+        return writerList;
+    }
+
+    public List<Recipe> getRecipeByWriter(String writer_name){
+        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name";
+        TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
+        query.setParameter("writer_name", writer_name);
+
+        List<Recipe> recipeList = query.getResultList();
+
+        return recipeList;
+    }
 
     // recipe 삭제
     public void remove(Long id){
