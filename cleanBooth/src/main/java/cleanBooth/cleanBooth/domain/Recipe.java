@@ -17,12 +17,10 @@ public class Recipe {
     private Long id;
 
     private String name;
-    private String style;
+    private String styles;
     private String ingredients;
 
     private String link;
-
-    private String writer;
 
     @Enumerated(EnumType.STRING)
     private Site site;
