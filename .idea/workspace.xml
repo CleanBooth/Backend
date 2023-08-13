@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: '/recipe' get 코드 작성 완료">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeDto.java" afterDir="false" />
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="feat: '/recipes' 기능 완료">
       <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691820964123</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: '/recipes' 기능 완료">
+      <created>1691926155051</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1691926155051</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,7 +330,8 @@
     <MESSAGE value="update: recipe link 타입 변경 (URL -&gt; String)" />
     <MESSAGE value="update: recipe Site 검색 오류 해결 완" />
     <MESSAGE value="update: '/recipe' get 코드 작성 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: '/recipe' get 코드 작성 완료" />
+    <MESSAGE value="feat: '/recipes' 기능 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: '/recipes' 기능 완료" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

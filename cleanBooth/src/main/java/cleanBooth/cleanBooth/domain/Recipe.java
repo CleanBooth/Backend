@@ -21,6 +21,8 @@ public class Recipe {
     private String ingredients;
 
     private String link;
+    private String videoTitle;
+    private Boolean isLike;
 
     @Enumerated(EnumType.STRING)
     private Site site;

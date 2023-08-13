@@ -17,6 +17,8 @@ public class RecipeDto {
     private String ingredients;
     private String link;
     private Site site;
+    private String videoTitle;
+    private Boolean isLike;
 
     public RecipeDto(Recipe recipe){
         this.name = recipe.getName();
@@ -24,6 +26,8 @@ public class RecipeDto {
         this.ingredients = recipe.getIngredients();
         this.link = recipe.getLink();
         this.site = recipe.getSite();
+        this.videoTitle = recipe.getVideoTitle();
+        this.isLike = recipe.getIsLike();
     }
 
 }
