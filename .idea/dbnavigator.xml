@@ -30,16 +30,29 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="4e952c3d-fbbb-4783-ae95-8c70906a6602">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
-    </connection>
-    <connection id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968">
-      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[delete from recipe;
-select * from recipe;
+    <connection id="4942f992-cb9b-422f-b94a-f157abb52cb4">
+      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[select * from recipe_writer;
+insert into recipe_writer(writer_id, name, link) values (1, '요리사1', 'link1.com');
+insert into recipe_writer(writer_id, name, link) values (2, '나야나요리사', 'link2.com');
 
-insert into recipe(recipe_id, ingredients, link, name, site, styles, writer) values (1, '배추', 'google.com', '김치', 1, '"한식", "간편식"', '요리사1');
-insert into recipe(recipe_id, ingredients, link, name, site, styles, writer) values (2, '김치', 'google.com', '김치찜', 1, '한식', '요리사1');
-insert into recipe(recipe_id, ingredients, link, name, site, styles, writer) values (3, '배추', 'google.com', '김치', 1, '한식, 간편식', '요리사1');
+select * from recipe_writer;
+
+select * from recipe_category;
+insert into recipe_category(recipe_category_id, name) values (1, '한식');
+insert into recipe_category(recipe_category_id, name) values (2, '중식');
+insert into recipe_category(recipe_category_id, name) values (3, '양식');
+insert into recipe_category(recipe_category_id, name) values (4, '간편식');
+insert into recipe_category(recipe_category_id, name) values (5, '다이어트');
+insert into recipe_category(recipe_category_id, name) values (6, '간식');
+insert into recipe_category(recipe_category_id, name) values (7, '베이킹');
+insert into recipe_category(recipe_category_id, name) values (8, '소스/잼/양념');
+
+select * from recipe_category;
+
+select * from recipe;
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
+values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1);
+
 select * from recipe;]]></console>
     </connection>
   </component>
@@ -60,6 +73,14 @@ select * from recipe;]]></console>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
@@ -69,93 +90,7 @@ select * from recipe;]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="4e952c3d-fbbb-4783-ae95-8c70906a6602" active="true" signed="true">
-        <database>
-          <name value="Connection" />
-          <description value="" />
-          <database-type value="MYSQL" />
-          <config-type value="BASIC" />
-          <database-version value="9999.0" />
-          <driver-source value="BUNDLED" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="3306" />
-          <database value="mysql" />
-          <tns-folder value="" />
-          <tns-profile value="" />
-          <type value="USER_PASSWORD" />
-          <user value="" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="true" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="false" />
-          <environment-type value="default" />
-          <connectivity-timeout value="30" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter>
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968" active="true" signed="true">
+      <connection id="4942f992-cb9b-422f-b94a-f157abb52cb4" active="true" signed="true">
         <database>
           <name value="clean_db" />
           <description value="" />
@@ -637,26 +572,6 @@ select * from recipe;]]></console>
     </general-settings>
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
-    <execution-variables>
-      <file file-url="db://a1d0f7c8-4f13-4c9f-8f8a-92a0fbca4968/consoles/clean_db">
-        <variable name=":link1" dataType="LITERAL" values="링크1, " />
-        <variable name=":1" dataType="NUMERIC" values="1, " />
-        <variable name=":ingredients1" dataType="LITERAL" values="재료1, " />
-        <variable name=":style" dataType="LITERAL" values="" />
-        <variable name=":style1" dataType="LITERAL" values="스타일1, " />
-        <variable name=":writer" dataType="LITERAL" values="" />
-        <variable name=":recipe_id1" dataType="LITERAL" values="" />
-        <variable name=":name" dataType="LITERAL" values="" />
-        <variable name=":site" dataType="LITERAL" values="" />
-        <variable name=":ingredients" dataType="LITERAL" values="" />
-        <variable name=":recipe_recipe_category_recipe_recipecategory" dataType="LITERAL" values="" />
-        <variable name=":recipe_recipe_category_recipe_recipecategory1" dataType="LITERAL" values="1, 카테고리1, " />
-        <variable name=":recipe_id" dataType="LITERAL" values="" />
-        <variable name=":link" dataType="LITERAL" values="" />
-        <variable name=":writer1" dataType="LITERAL" values="작성자1, " />
-        <variable name=":site1" dataType="LITERAL" values="1, 사이트1, " />
-        <variable name=":name1" dataType="LITERAL" values="이름1, " />
-      </file>
-    </execution-variables>
+    <execution-variables />
   </component>
 </project>

@@ -1,14 +1,21 @@
 package cleanBooth.cleanBooth.Recipe;
 
+import cleanBooth.cleanBooth.Recipe.Dto.RecipeDto;
+import cleanBooth.cleanBooth.Recipe.Dto.RecipeFilterDto;
+import cleanBooth.cleanBooth.Recipe.Dto.RecipeIdDto;
+import cleanBooth.cleanBooth.Recipe.Dto.RecipeWriterDto;
+import cleanBooth.cleanBooth.Recipe.Response.RecipeIdResponse;
 import cleanBooth.cleanBooth.Recipe.Response.RecipeListResponse;
+import cleanBooth.cleanBooth.Recipe.Response.RecipeWriterResponse;
 import cleanBooth.cleanBooth.domain.Recipe;
+import cleanBooth.cleanBooth.domain.RecipeWriter;
 import cleanBooth.cleanBooth.domain.Site;
 import cleanBooth.cleanBooth.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,15 +38,20 @@ public class RecipeController {
         return ResponseEntity.ok(response);
     }
 
-    //@GetMapping("/{writer_name}")
-
     @GetMapping("/recipes")
     public RecipeListResponse stylefilter(@RequestBody List<String> styles){
         List<Recipe> recipes = recipeRepository.findByStyle(styles);
+        List<RecipeFilterDto> recipeFilterDtos = new ArrayList<>();
+
+        for (Recipe recipe: recipes) {
+            RecipeFilterDto dto = new RecipeFilterDto(recipe);
+
+            recipeFilterDtos.add(dto);
+        }
         int totalCount = recipes.size();
 
         RecipeListResponse response = new RecipeListResponse();
-        response.setRecipes(recipes);
+        response.setRecipeFilterDtos(recipeFilterDtos);
         response.setTotalCount(totalCount);
 
         return response;
@@ -57,18 +69,35 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/{recipeId}")
-    public String Recipe(@PathVariable long recipeId, Model model){
+    public RecipeIdResponse findRecipe(@PathVariable long recipeId){
         Recipe recipe = recipeRepository.findByID(recipeId);
-        model.addAttribute("recipe", recipe);
+        RecipeIdDto recipeIdDto = new RecipeIdDto(recipe);
+        RecipeWriter recipeWriter = recipe.getRecipeWriter();
 
-        return "basic/recipe"; //html
+        RecipeIdResponse response = new RecipeIdResponse();
+        response.setRecipeIdDto(recipeIdDto);
+        response.setRecipeWriter(recipeWriter);
+
+        return response;
     }
 
-    @GetMapping("/recipe/style/{style}")
-    public List<Recipe> findRecipeByStyle(@PathVariable String style){
-        List<Recipe> resultList = recipeRepository.findByStyle(style);
+    @GetMapping("/recipe/writer/{writer_name}")
+    public RecipeWriterResponse findByWriter(@PathVariable String writer_name){
+        List<Recipe> recipelist = recipeRepository.getRecipeSearchWriter(writer_name);
+        List<RecipeWriterDto> recipeWriterDtoList = new ArrayList<>();
 
-        return resultList;
+        for(Recipe recipe: recipelist){
+            RecipeWriterDto recipeWriterDto = new RecipeWriterDto(recipe);
+
+            recipeWriterDtoList.add(recipeWriterDto);
+        }
+
+        RecipeWriter recipeWriter = recipeRepository.findWriter(writer_name);
+
+        RecipeWriterResponse recipeWriterResponse = new RecipeWriterResponse();
+        recipeWriterResponse.setRecipeWriterDto(recipeWriterDtoList);
+        recipeWriterResponse.setRecipeWriter(recipeWriter);
+
+        return recipeWriterResponse;
     }
-
 }
