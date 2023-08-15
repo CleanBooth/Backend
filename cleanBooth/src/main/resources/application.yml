@@ -1,7 +1,6 @@
 spring:
   jwt:
     secret-key: 5c127c4d752bfa53cb742f13dc00f86efa1ad4323e17c6fe82e5dfbf0ad4ef9ac2f3282a374f5bcd3406e5bcaac84500ac71e2c75c548d325f5b393036fb4b21
-
   oauth:
     naver:
       secret: ggw1vW1qEh

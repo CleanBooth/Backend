@@ -3,6 +3,8 @@ package cleanBooth.cleanBooth.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import lombok.Builder;
+import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +19,21 @@ public class User {
     private String name;
     private String email;
     private String birthday;
-    private String phoneNum;
+    private String mobile;
 
+    @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
     @Builder
-    public User(String name, String email, String birthday, OAuthProvider oAuthProvider) {
+    public User(String name, String email, String birthday, String mobile, OAuthProvider oAuthProvider) {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
+        this.mobile = mobile;
         this.oAuthProvider = oAuthProvider;
     }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
+
 }
