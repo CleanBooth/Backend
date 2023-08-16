@@ -1,5 +1,8 @@
 package cleanBooth.cleanBooth.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +21,6 @@ public class Recipe {
 
     private String name;
     private String styles;
-    private String ingredients;
 
     private String link;
     private String videoTitle;
@@ -27,8 +29,7 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private Site site;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private RecipeWriter recipeWriter;
-
 
 }
