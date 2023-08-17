@@ -100,15 +100,15 @@ public class NoticeController {
         }
         else if(noticeNum == 0){
             nextTitle = noticeRepository.getTitle(noticeNum + 1);
-            beforeTitle = noticeRepository.getTitle(noticeNum);
-            beforeId = noticeNum;
+            beforeTitle = "이전 글이 없습니다.";
+            beforeId = null;
             nextId = noticeNum +1;
         }
         else{
             beforeTitle = noticeRepository.getTitle(noticeNum - 1);
-            nextTitle = noticeRepository.getTitle(noticeNum);
+            nextTitle = "다음 글이 없습니다.";
             beforeId = noticeNum -1;
-            nextId = noticeNum;
+            nextId = null;
         }
 
         next.setNoticeId(nextId);
