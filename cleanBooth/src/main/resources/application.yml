@@ -8,6 +8,11 @@ spring:
       url:
         auth: https://nid.naver.com
         api: https://openapi.naver.com
+#  datasource: local db 설정
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: hyun
+#    password: 1234
+#    driver-class-name: org.postgresql.Driver
   datasource:
     url: jdbc:mysql://cleantest-db.czprjujkxgva.ap-northeast-2.rds.amazonaws.com:3306/cleanTest_DB?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false
     username: hyun

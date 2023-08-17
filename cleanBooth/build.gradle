@@ -28,6 +28,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
 
 	implementation 'org.springframework.boot:spring-boot-starter'
 	runtimeOnly 'mysql:mysql-connector-java'

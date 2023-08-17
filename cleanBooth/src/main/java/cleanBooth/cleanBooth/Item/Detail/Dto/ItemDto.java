@@ -14,8 +14,8 @@ public class ItemDto {
     private Long item_id;
     private String name;
     private String brandName;
-    private TextField description;
-    private Nutrient nutrient;
+    private String description;
+    private String nutrient;
     private Integer price;
     private String image;
     private NewStatus isNew;
@@ -34,7 +34,6 @@ public class ItemDto {
         this.image = item.getImage();
         this.isNew = item.getIsNew();
         this.isTesting = item.getIsTesting();
-        this.testerRate = item.getTesterRate();
         this.orderLink = item.getOrderLink();
         this.category = item.getCategory();
     }
