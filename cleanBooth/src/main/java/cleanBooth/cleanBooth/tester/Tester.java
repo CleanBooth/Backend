@@ -20,10 +20,14 @@ public class Tester {
     private Item item;
 
     private boolean isTesting;
-    @JsonFormat(pattern = "yy/MM/dd")
+//    @JsonFormat(pattern = "yy/MM/dd")
+    @Column(name = "start_date")
+    @Temporal(TemporalType.DATE)
     private LocalDate startDate;
 
-    @JsonFormat(pattern = "yy/MM/dd")
+//    @JsonFormat(pattern = "yy/MM/dd")
+    @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
     private LocalDate endDate;
 
     private int people;
@@ -36,8 +40,9 @@ public class Tester {
     }
 
     //id 제외한 생성자
-    public Tester(boolean isTesting, LocalDate startDate, LocalDate endDate, int people, String content, String option) {
-        this.isTesting = isTesting;
+    public Tester(Item item, boolean isTesting, LocalDate startDate, LocalDate endDate, int people, String content, String option) {
+        this.item = item;
+        this.isTesting = true;
         this.startDate = startDate;
         this.endDate = endDate;
         this.people = people;
@@ -46,5 +51,9 @@ public class Tester {
 
     public void getItem(Item item) {
         this.item = item;
+    }
+
+    public void doTesting() {
+        this.isTesting = true;
     }
 }

@@ -50,17 +50,17 @@ public class TesterController {
                       Model model) {
         testerHistoryRepository.save(testerHistory);
     }
-    /**
+/*    *//**
      * 테스트용 데이터 추가
-     */
+     *//*
     @GetMapping("/item")
     public void init() {
-        Tester tester1 = new Tester(true, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
-        Tester tester2 = new Tester(true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+        Tester tester1 = new Tester(1, true, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+        Tester tester2 = new Tester(2, true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
 
         testerRepository.save(tester1);
         testerRepository.save(tester2);
-    }
+    }*/
 
 //    @GetMapping("/apply/{tester_id}")
 //    public void init() {

@@ -40,13 +40,24 @@ public class TesterHistory {
     public TesterHistory() {
     }
 
-    public TesterHistory(Long testerId, Long userId, Long reviewId, String name, String phoneNum, String address, String message, boolean isWin, String option, boolean isReviewed) {
+    public TesterHistory(Tester tester, User user, Review review, String name, String phoneNum, String address, String message, boolean isWin, String option, boolean isReviewed) {
+        this.tester = tester;
+        this.user = user;
+        this.review = review;
         this.name = name;
         this.phoneNum = phoneNum;
         this.address = address;
         this.message = message;
-        this.isWin = isWin;
+        this.isWin = false;
         this.option = option;
-        this.isReviewed = isReviewed;
+        this.isReviewed = false;
+    }
+
+    public void doWin() {
+        this.isWin = true;
+    }
+
+    public void Reviewed() {
+        this.isReviewed = true;
     }
 }
