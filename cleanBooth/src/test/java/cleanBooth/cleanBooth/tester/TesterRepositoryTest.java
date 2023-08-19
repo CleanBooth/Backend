@@ -14,14 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class TesterRepositoryTest {
     TesterRepository testerRepository = new TesterRepository();
 
-    @AfterEach
-    void afterEach() {
-        testerRepository.clearTester();
-    }
+//    @AfterEach
+//    void afterEach() {
+//        testerRepository.clearTester();
+//    }
     @Test
     void save() {
         //given
-        Tester tester = new Tester(12L,false, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 30),23, "content", "option", "name", "image", "detailImg");
+        Tester tester = new Tester(false, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 30),23, "content", "option");
 
         //when
         Tester savedTester = testerRepository.save(tester);
@@ -34,8 +34,8 @@ class TesterRepositoryTest {
     @Test
     void findAll() {
         // given
-        Tester tester1 = new Tester(10L,false,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
-        Tester tester2 = new Tester(12L,true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
+        Tester tester1 = new Tester(false,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+        Tester tester2 = new Tester(true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
 
         testerRepository.save(tester1);
         testerRepository.save(tester2);
@@ -47,4 +47,12 @@ class TesterRepositoryTest {
         assertThat(result).contains(tester1, tester2);
     }
 
+    @Test
+    void test3() {
+        Tester tester1 = new Tester(false,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+        Tester tester2 = new Tester(true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+
+        testerRepository.save(tester1);
+        testerRepository.save(tester2);
+    }
 }

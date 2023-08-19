@@ -16,6 +16,7 @@ public class TesterController {
     private final TesterRepository testerRepository;
     private final TesterHistoryRepository testerHistoryRepository;
 
+
     /* 클린체험단 리스트 GET */
     @GetMapping
     public List<Tester> testers(Model model) {
@@ -40,6 +41,8 @@ public class TesterController {
 //        model.addAttribute("tester", tester);
     }
 
+
+
     /* 체험단 체험 신청 POST */
     @PostMapping("/apply/{tester_id}")
     public void apply(@PathVariable long tester_id,
@@ -50,10 +53,10 @@ public class TesterController {
     /**
      * 테스트용 데이터 추가
      */
-    @PostConstruct
+    @GetMapping("/item")
     public void init() {
-        Tester tester1 = new Tester(10L,false, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
-        Tester tester2 = new Tester(12L,true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
+        Tester tester1 = new Tester(true, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
+        Tester tester2 = new Tester(true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option");
 
         testerRepository.save(tester1);
         testerRepository.save(tester2);

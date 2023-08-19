@@ -1,8 +1,8 @@
 package cleanBooth.cleanBooth.tester;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import cleanBooth.cleanBooth.domain.Review;
+import cleanBooth.cleanBooth.domain.User;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +13,15 @@ public class TesterHistory {
     @Id
     @GeneratedValue
     private Long id;
-    private Long testerId;
-    private Long userId;
 
-    private Long reviewId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Tester tester;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Review review;
 
     private String name;
 
@@ -36,9 +41,6 @@ public class TesterHistory {
     }
 
     public TesterHistory(Long testerId, Long userId, Long reviewId, String name, String phoneNum, String address, String message, boolean isWin, String option, boolean isReviewed) {
-        this.testerId = testerId;
-        this.userId = userId;
-        this.reviewId = reviewId;
         this.name = name;
         this.phoneNum = phoneNum;
         this.address = address;
