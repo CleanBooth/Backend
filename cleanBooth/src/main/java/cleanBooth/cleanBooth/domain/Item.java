@@ -60,4 +60,13 @@ public class Item {
 
     }
 
+/*    // public 생성자 임시로 생성
+    public Item() {
+        // 기본 생성자 내용
+    }
+    // setter 메서드 임시로 생성
+    public void setName(String name) {
+        this.name = name;
+    }*/
+
 }

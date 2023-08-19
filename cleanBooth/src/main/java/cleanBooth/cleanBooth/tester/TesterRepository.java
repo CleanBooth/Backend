@@ -1,16 +1,24 @@
 package cleanBooth.cleanBooth.tester;
 
 
+import cleanBooth.cleanBooth.domain.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Repository
-public class TesterRepository {
+public interface TesterRepository extends JpaRepository<Tester, Long> {
+
+    Optional<Tester> findById(Long id);
+
+    List<Tester> findByItem(Item item);
+
+/*
     private static final Map<Long, Tester> cleanTest = new ConcurrentHashMap<>(); //static
 
     private static long sequence = 0L; //static
@@ -32,6 +40,7 @@ public class TesterRepository {
     public List<Tester> findAll() {
         return new ArrayList<>(cleanTest.values()); // 안전하게 한번 감싼 것
     }
+*/
 
 
 /*    // 업데이트
@@ -53,7 +62,7 @@ public class TesterRepository {
         this.option = option;
         this.name = name;
         this.image = image;*/
-    public void clearTester() {
+/*    public void clearTester() {
         cleanTest.clear();
-    }
+    }*/
 }
