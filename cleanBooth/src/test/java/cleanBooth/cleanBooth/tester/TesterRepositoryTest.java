@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ class TesterRepositoryTest {
     @Test
     void save() {
         //given
-        Tester tester = new Tester(12L,false,"2023-04-23","2023-04-25",23, "content", "option", "name", "image");
+        Tester tester = new Tester(12L,false, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 30),23, "content", "option", "name", "image", "detailImg");
 
         //when
         Tester savedTester = testerRepository.save(tester);
@@ -33,8 +34,8 @@ class TesterRepositoryTest {
     @Test
     void findAll() {
         // given
-        Tester tester1 = new Tester(10L,false,"2023-04-23","2023-04-25",23, "content", "option", "name", "image");
-        Tester tester2 = new Tester(12L,true,"2023-04-23","2023-04-25",23, "content", "option", "name", "image");
+        Tester tester1 = new Tester(10L,false,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
+        Tester tester2 = new Tester(12L,true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
 
         testerRepository.save(tester1);
         testerRepository.save(tester2);

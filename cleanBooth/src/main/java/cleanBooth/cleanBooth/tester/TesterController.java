@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,8 +52,8 @@ public class TesterController {
      */
     @PostConstruct
     public void init() {
-        Tester tester1 = new Tester(10L,false,"2023-04-23","2023-04-25",23, "content", "option", "name", "image");
-        Tester tester2 = new Tester(12L,true,"2023-04-23","2023-04-25",23, "content", "option", "name", "image");
+        Tester tester1 = new Tester(10L,false, LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
+        Tester tester2 = new Tester(12L,true,LocalDate.of(2023, 04, 23),LocalDate.of(2023, 04, 23),23, "content", "option", "name", "image", "detailImg");
 
         testerRepository.save(tester1);
         testerRepository.save(tester2);
