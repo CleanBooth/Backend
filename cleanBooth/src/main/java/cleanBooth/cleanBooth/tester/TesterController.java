@@ -1,7 +1,10 @@
 package cleanBooth.cleanBooth.tester;
 
+import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
+import cleanBooth.cleanBooth.tester.service.TesterService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +20,13 @@ public class TesterController {
     private final TesterRepository testerRepository;
     private final TesterHistoryRepository testerHistoryRepository;
 
+    @Autowired
+    private TesterService testerService;
 
     /* 클린체험단 리스트 GET */
     @GetMapping
-    public List<Tester> testers(Model model) {
-        List<Tester> testers = testerRepository.findAll();
-        model.addAttribute("testers", testers);
-        return testers;
+    public List<TesterListRequest> getTestedItemTestersDTO() {
+        return testerService.getTestedItemTestersDTO();
     }
 
     /* 체험단 1개 상세페이지 GET*/

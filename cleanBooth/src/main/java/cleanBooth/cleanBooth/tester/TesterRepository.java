@@ -1,6 +1,7 @@
 package cleanBooth.cleanBooth.tester;
 
 
+import cleanBooth.cleanBooth.domain.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface TesterRepository extends JpaRepository<Tester, Long> {
 
     Optional<Tester> findById(Long id);
+
+    List<Tester> findByItem(Item item);
+
 /*
     private static final Map<Long, Tester> cleanTest = new ConcurrentHashMap<>(); //static
 
