@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Recipe;
+package cleanBooth.cleanBooth.Recipe.Dto;
 
 import cleanBooth.cleanBooth.domain.Recipe;
 import cleanBooth.cleanBooth.domain.Site;
@@ -14,20 +14,17 @@ public class RecipeDto {
 
     private String name;
     private String styles;
-    private String ingredients;
     private String link;
     private Site site;
     private String videoTitle;
     private Boolean isLike;
 
-    public RecipeDto(Recipe recipe){
+    public RecipeDto(Recipe recipe) {
         this.name = recipe.getName();
         this.styles = recipe.getStyles();
-        this.ingredients = recipe.getIngredients();
         this.link = recipe.getLink();
         this.site = recipe.getSite();
         this.videoTitle = recipe.getVideoTitle();
         this.isLike = recipe.getIsLike();
     }
-
 }

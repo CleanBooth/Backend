@@ -31,12 +31,6 @@ public class RecipeService {
         return recipeRepository.findByID(recipeId);
     }
 
-    public List<Recipe> findRecipeByStyle(@PathVariable String style){
-        List<Recipe> resultList = recipeRepository.findByStyle(style);
-
-        return resultList;
-    }
-
     public List<String> findRecipeBySite(@PathVariable Site site){
         List<String> resultList = recipeRepository.findBySite(site);
 
