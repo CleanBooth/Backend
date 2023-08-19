@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tester")
@@ -28,14 +29,14 @@ public class TesterController {
     /* 체험단 1개 상세페이지 GET*/
     @GetMapping("/{tester_id}")
     public void tester(@PathVariable long tester_id, Model model) {
-        Tester tester = testerRepository.findById(tester_id);
+        Optional<Tester> tester = testerRepository.findById(tester_id);
         model.addAttribute("tester", tester);
     }
 
     /* 체험단 신청 페이지 GET*/
     @GetMapping("/apply/{tester_id}")
     public void applyForm(@PathVariable long tester_id, Model model) {
-        Tester tester = testerRepository.findById(tester_id);
+        Optional<Tester> tester = testerRepository.findById(tester_id);
         model.addAttribute("tester", tester);
 //        TesterHistory testerHistory = testerHistoryRepository.findById(tester_id);
 //        model.addAttribute("tester", tester);
