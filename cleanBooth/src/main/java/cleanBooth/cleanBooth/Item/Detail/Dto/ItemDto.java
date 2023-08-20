@@ -11,7 +11,6 @@ import java.awt.*;
 @NoArgsConstructor
 public class ItemDto {
 
-    private Long item_id;
     private String name;
     private String brandName;
     private String description;
@@ -25,7 +24,6 @@ public class ItemDto {
     private Category category;
 
     public ItemDto(Item item){
-        this.item_id = item.getId();
         this.name = item.getName();
         this.brandName = item.getBrandName();
         this.description = item.getDescription();
@@ -37,6 +35,4 @@ public class ItemDto {
         this.orderLink = item.getOrderLink();
         this.category = item.getCategory();
     }
-
-
 }

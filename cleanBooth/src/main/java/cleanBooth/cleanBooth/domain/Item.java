@@ -19,8 +19,10 @@ public class Item {
 
     private String name;
     private String brandName;
-    private String description;
+
     private String nutrient;
+    private String allergyInfo;
+    private
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviews = new ArrayList<>();
