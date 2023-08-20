@@ -61,6 +61,7 @@ public class Item {
         this.allergyInfo = allergyInfo;
     }
 
+
     public Float getAvgRating(){
         List<Float> scores = reviews.stream().map(Review::getScore).collect(Collectors.toList());
         float totalScore = 0;
@@ -69,4 +70,14 @@ public class Item {
         }
         return totalScore/reviewCount;
     }
+
+/*    // public 생성자 임시로 생성
+    public Item() {
+        // 기본 생성자 내용
+    }
+    // setter 메서드 임시로 생성
+    public void setName(String name) {
+        this.name = name;
+    }*/
+
 }
