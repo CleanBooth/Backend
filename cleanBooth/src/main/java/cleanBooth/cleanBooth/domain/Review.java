@@ -2,6 +2,7 @@ package cleanBooth.cleanBooth.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class Review {
     private Float score;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
     private Date uploadDate;
 
     @Builder

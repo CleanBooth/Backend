@@ -20,8 +20,9 @@ public class Item {
     private String name;
     private String brandName;
 
-    private String nutrient;
+    private Nutrient nutrientInfo;
     private String allergyInfo;
+    private String ingredientInfo;
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviews = new ArrayList<>();
@@ -38,7 +39,6 @@ public class Item {
     private String orderLink;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
     private Long isViewed = 0L;
@@ -51,7 +51,6 @@ public class Item {
         this.id = id;
         this.name = name;
         this.brandName = brandName;
-        this.nutrient = nutrient;
         this.price = price;
         this.image = image;
         this.isNew = isNew;
@@ -69,6 +68,10 @@ public class Item {
             totalScore += score;
         }
         return totalScore/reviewCount;
+    }
+
+    public void viewIncrease(){
+        this.isViewed++;
     }
 
 /*    // public 생성자 임시로 생성

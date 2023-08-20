@@ -1,37 +1,45 @@
 package cleanBooth.cleanBooth.Item.Detail.Dto;
 
 import cleanBooth.cleanBooth.domain.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
-
 @Getter
 @NoArgsConstructor
-public class ItemDto {
+public class ItemDetailDto {
 
+    private Long itemId;
     private String name;
     private String brandName;
-    private String nutrient;
+    private Nutrient nutrient;
     private Integer price;
     private String image;
     private NewStatus isNew;
-    private TestingStatus isTesting;
     private Float avgRating;
     private String orderLink;
     private Category category;
+    private Boolean isCleaned;
+    private Boolean isSuperior;
+    private Boolean cleanPremium;
+    private String allergyInfo;
+    private String ingredientInfo;
 
-    public ItemDto(Item item){
+    public ItemDetailDto(Item item){
+        this.itemId = item.getId();
         this.name = item.getName();
         this.brandName = item.getBrandName();
-        this.nutrient = item.getNutrient();
         this.price = item.getPrice();
         this.image = item.getImage();
         this.isNew = item.getIsNew();
-        this.isTesting = item.getIsTesting();
         this.orderLink = item.getOrderLink();
         this.category = item.getCategory();
         this.avgRating = item.getAvgRating();
+        this.nutrient = item.getNutrientInfo();
+        this.allergyInfo = item.getAllergyInfo();
+        this.ingredientInfo = item.getIngredientInfo();
+
+        this.isCleaned = true;
+        this.isSuperior = (item.getAvgRating() < 3.0)?false:true;
+        this.cleanPremium = (item.getAvgRating() > 3.5)?true:false;
     }
 }
