@@ -1,10 +1,12 @@
 package cleanBooth.cleanBooth.tester;
 
+import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
 import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
 import cleanBooth.cleanBooth.tester.service.TesterService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +33,8 @@ public class TesterController {
 
     /* 체험단 1개 상세페이지 GET*/
     @GetMapping("/{tester_id}")
-    public void tester(@PathVariable long tester_id, Model model) {
-        Optional<Tester> tester = testerRepository.findById(tester_id);
-        model.addAttribute("tester", tester);
+    public TesterDetailRequest tester(@PathVariable Long tester_id) throws ChangeSetPersister.NotFoundException {
+        return testerService.getTesterDetailById(tester_id);
     }
 
     /* 체험단 신청 페이지 GET*/

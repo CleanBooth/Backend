@@ -4,8 +4,10 @@ import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.repository.ItemRepository;
 import cleanBooth.cleanBooth.tester.Tester;
 import cleanBooth.cleanBooth.tester.TesterRepository;
+import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
 import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,5 +41,26 @@ public class TesterService {
         }
 
         return testerListRequests;
+    }
+
+    public TesterDetailRequest getTesterDetailById(Long id) throws ChangeSetPersister.NotFoundException {
+        Tester tester = testerRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
+
+        // Convert Tester to TesterDetailRequest using the conversion method you have implemented
+        TesterDetailRequest request = convertToRequest(tester);
+
+        return request;
+    }
+
+    // This method converts Tester to TesterDetailRequest
+    private TesterDetailRequest convertToRequest(Tester tester) {
+        TesterDetailRequest request = new TesterDetailRequest();
+        request.setIsTesting(tester.isTesting());
+        request.setItemName(tester.getItem().getName());
+        request.setItemImage(tester.getItem().getImage());
+        request.setContent(tester.getContent());
+        request.setEndDate(tester.getEndDate());
+        request.setDetailImage(tester.getDetailImage());
+        return request;
     }
 }
