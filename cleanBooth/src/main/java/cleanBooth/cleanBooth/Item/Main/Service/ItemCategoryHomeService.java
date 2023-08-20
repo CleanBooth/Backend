@@ -68,26 +68,26 @@ public class ItemCategoryHomeService {
 
     public ItemResponseDto findItemListHomeByNutrient (String nutrient, String orderBy){
 
-        List<Item> nutrientItemList = new ArrayList<>();
+        List<Item> ingredientItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
 
         //영양성분으로 필터링
-        nutrientItemList = itemRepository.findAllByNutrientContaining(nutrient);
+        ingredientItemList = itemRepository.findAllByIngredientInfoContaining(nutrient);
 
         //정렬처리
         if (orderBy.equals("recommend")){ //추천순
-            sortedItemList = nutrientItemList.stream()
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getAvgRating))
                     .toList();
             System.out.println("추천순으로 정렬");
         } else if (orderBy.equals("popular")) { //인기순 (조회순)
-            sortedItemList = nutrientItemList.stream()
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getIsViewed))
                     .toList();
             System.out.println("인기순으로 정렬");
         }
         else { //리뷰 많은 순
-            sortedItemList = nutrientItemList.stream()
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getReviewCount))
                     .toList();
             System.out.println("리뷰 많은 순으로 정령");
