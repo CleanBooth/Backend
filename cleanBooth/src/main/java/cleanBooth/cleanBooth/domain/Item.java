@@ -22,7 +22,6 @@ public class Item {
 
     private String nutrient;
     private String allergyInfo;
-    private
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviews = new ArrayList<>();
@@ -47,11 +46,11 @@ public class Item {
 
 
     @Builder
-    public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image, NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink) {
+    public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image,
+                NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink, String allergyInfo) {
         this.id = id;
         this.name = name;
         this.brandName = brandName;
-        this.description = description;
         this.nutrient = nutrient;
         this.price = price;
         this.image = image;
@@ -59,7 +58,7 @@ public class Item {
         this.isTesting = isTesting;
         this.category = category;
         this.orderLink = orderLink;
-
+        this.allergyInfo = allergyInfo;
     }
 
     public Float getAvgRating(){
