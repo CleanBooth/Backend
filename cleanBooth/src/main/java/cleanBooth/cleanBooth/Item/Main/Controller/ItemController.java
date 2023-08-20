@@ -5,7 +5,6 @@ import cleanBooth.cleanBooth.Item.Main.Service.ItemCategoryHomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,10 +13,18 @@ public class ItemController {
 
     private final ItemCategoryHomeService itemCategoryHomeService;
 
-    @GetMapping("items/{category_name}/{orderBy}/")
-    public ItemResponseDto getItemListHome(
-            @PathVariable("category_name")String category_name,
+    @GetMapping("items/category/{categoryName}/{orderBy}/")
+    public ItemResponseDto getItemListCategoryHome(
+            @PathVariable("categoryName")String categoryName,
             @PathVariable("orderBy")String orderBy) {
-        return itemCategoryHomeService.findItemListHome(category_name, orderBy);
+        return itemCategoryHomeService.findItemListHomeByCategory(categoryName, orderBy);
     }
+
+    @GetMapping("items/nutrient/{nutrientAttribute}/{orderBy}/")
+    public ItemResponseDto getItemListNutrientHome(
+            @PathVariable("nutrientAttribute")String nutrientAttribute,
+            @PathVariable("orderBy")String orderBy) {
+        return itemCategoryHomeService.findItemListHomeByNutrient(nutrientAttribute, orderBy);
+    }
+
 }
