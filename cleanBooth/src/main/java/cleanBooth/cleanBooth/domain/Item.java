@@ -44,7 +44,6 @@ public class Item {
     private Long isViewed = 0L;
     private Long reviewCount = this.reviews.stream().count();
 
-
     @Builder
     public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image,
                 NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink, String allergyInfo) {
