@@ -1,5 +1,6 @@
 package cleanBooth.cleanBooth.repository;
 
+import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.Review;
 import cleanBooth.cleanBooth.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     List<Review> findAllByItem_Id(Long item_id);
 
     List<Review> findAllByUser(User user);
+
+    List<Review> findAllByUserAndItem(User user, Item item);
 }

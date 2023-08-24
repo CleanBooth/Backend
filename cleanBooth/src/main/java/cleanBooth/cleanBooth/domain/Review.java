@@ -29,13 +29,11 @@ public class Review {
     private Date uploadDate;
 
     @Builder
-    public Review(Long id, Item item, User user, String goodDescription, String badDescription, Float score, Date uploadDate) {
-        this.id = id;
+    public Review(Item item, User user, String goodDescription, String badDescription, Float score) {
         this.item = item;
         this.user = user;
         this.goodDescription = goodDescription;
         this.badDescription = badDescription;
         this.score = score;
-        this.uploadDate = uploadDate;
     }
 }
