@@ -4,6 +4,7 @@ import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.repository.ItemRepository;
 import cleanBooth.cleanBooth.tester.Tester;
 import cleanBooth.cleanBooth.tester.TesterRepository;
+import cleanBooth.cleanBooth.tester.dto.TesterApplyGetDto;
 import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
 import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,10 @@ import java.util.List;
 public class TesterService {
     @Autowired
     private TesterRepository testerRepository;
-
     @Autowired
     private ItemRepository itemRepository;
 
+    /* 체험단 리스트 가져오기 */
     public List<TesterListRequest> getTestedItemTestersDTO() {
         List<Item> testedItems = itemRepository.findByIsTestingTrue();
         List<TesterListRequest> testerListRequests = new ArrayList<>();
@@ -43,6 +44,7 @@ public class TesterService {
         return testerListRequests;
     }
 
+    /* id에 따라 체험단 자세히보기 */
     public TesterDetailRequest getTesterDetailById(Long id) throws ChangeSetPersister.NotFoundException {
         Tester tester = testerRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
@@ -63,4 +65,24 @@ public class TesterService {
         request.setDetailImage(tester.getDetailImage());
         return request;
     }
+
+    /* 체험단 신청페이지 GET*/
+    public TesterApplyGetDto getTesterApplyGetById(Long testerId) {
+        Tester tester = testerRepository.findById(testerId).orElse(null);
+
+        if (tester == null) {
+            return null; // 없는 경우 null 반환
+        }
+
+        TesterApplyGetDto testerApplyRequest = new TesterApplyGetDto();
+        testerApplyRequest.setIsTesting(tester.isTesting());
+        testerApplyRequest.setItemName(tester.getItem().getName());
+        testerApplyRequest.setItemImage(tester.getItem().getImage());
+        testerApplyRequest.setContent(tester.getContent());
+        testerApplyRequest.setEndDate(tester.getEndDate());
+        testerApplyRequest.setOptions(tester.getOptions());
+
+        return testerApplyRequest;
+    }
+
 }

@@ -1,19 +1,21 @@
 package cleanBooth.cleanBooth.tester;
 
+import cleanBooth.cleanBooth.domain.User;
+import cleanBooth.cleanBooth.repository.ReviewRepository;
+import cleanBooth.cleanBooth.repository.UserRepository;
+import cleanBooth.cleanBooth.tester.dto.TesterApplyGetDto;
+import cleanBooth.cleanBooth.tester.dto.TesterApplyPostDto;
 import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
 import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
 import cleanBooth.cleanBooth.tester.service.TesterService;
-import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/tester")
@@ -24,6 +26,12 @@ public class TesterController {
 
     @Autowired
     private TesterService testerService;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /* 클린체험단 리스트 GET */
     @GetMapping
@@ -39,22 +47,36 @@ public class TesterController {
 
     /* 체험단 신청 페이지 GET*/
     @GetMapping("/apply/{tester_id}")
-    public void applyForm(@PathVariable long tester_id, Model model) {
-        Optional<Tester> tester = testerRepository.findById(tester_id);
-        model.addAttribute("tester", tester);
-//        TesterHistory testerHistory = testerHistoryRepository.findById(tester_id);
-//        model.addAttribute("tester", tester);
+    public ResponseEntity<TesterApplyGetDto> getTesterApplyData(@PathVariable("tester_id") Long testerId) {
+        TesterApplyGetDto testerApplyGetDto = testerService.getTesterApplyGetById(testerId);
+
+        if (testerApplyGetDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(testerApplyGetDto);
     }
 
-
-
-    /* 체험단 체험 신청 POST */
+    // 수정중
+/*    *//* 체험단 체험 신청 POST *//*
     @PostMapping("/apply/{tester_id}")
-    public void apply(@PathVariable long tester_id,
-                      @ModelAttribute TesterHistory testerHistory,
-                      Model model) {
-        testerHistoryRepository.save(testerHistory);
-    }
+    public ResponseEntity<String> saveTesterApplication(HttpServletRequest request, @RequestBody TesterApplyPostDto applyDto, @PathVariable("tester_id") Long testerId) {
+        // TesterApplyPostDto 데이터를 가져와서 TesterHistory 도메인에 저장하는 로직을 작성합니다.
+        applyDto.setTesterId(testerId);
+
+        // 현재 인증된 사용자 정보 얻기
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+
+        // User 객체에서 정보를 가져와 활용
+        TesterHistory testerHistory = new TesterHistory(testerId, user,
+                applyDto.getName(), applyDto.getPhoneNum(), applyDto.getAddress(),
+                applyDto.getMessage(), false, applyDto.getOption(), false);
+
+        testerHistoryRepository.save(testerHistory); // 데이터 저장
+
+        return ResponseEntity.ok("Application saved successfully");
+    }*/
 /*    *//**
      * 테스트용 데이터 추가
      *//*

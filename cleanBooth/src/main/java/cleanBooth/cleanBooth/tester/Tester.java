@@ -34,21 +34,21 @@ public class Tester {
 
     private String content;
 
-    private String option;
+    private String options;
 
     private String detailImage;
     public Tester() { //기본생성자
     }
 
     //id 제외한 생성자
-    public Tester(Item item, boolean isTesting, LocalDate startDate, LocalDate endDate, int people, String content, String option, String detailImage) {
+    public Tester(Item item, boolean isTesting, LocalDate startDate, LocalDate endDate, int people, String content, String options, String detailImage) {
         this.item = item;
         this.isTesting = true;
         this.startDate = startDate;
         this.endDate = endDate;
         this.people = people;
         this.content = content;
-        this.option = option;
+        this.options = options;
         this.detailImage = detailImage;
     }
 
