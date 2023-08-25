@@ -2,6 +2,7 @@ package cleanBooth.cleanBooth.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
@@ -24,16 +25,15 @@ public class Review {
     private Float score;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
     private Date uploadDate;
 
     @Builder
-    public Review(Long id, Item item, User user, String goodDescription, String badDescription, Float score, Date uploadDate) {
-        this.id = id;
+    public Review(Item item, User user, String goodDescription, String badDescription, Float score) {
         this.item = item;
         this.user = user;
         this.goodDescription = goodDescription;
         this.badDescription = badDescription;
         this.score = score;
-        this.uploadDate = uploadDate;
     }
 }

@@ -6,6 +6,8 @@ import lombok.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 @Getter
@@ -17,8 +19,10 @@ public class Item {
 
     private String name;
     private String brandName;
-    private TextField description;
-    private Nutrient nutrient;
+
+    private Nutrient nutrientInfo;
+    private String allergyInfo;
+    private String ingredientInfo;
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviews = new ArrayList<>();
@@ -32,32 +36,41 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private TestingStatus isTesting;
 
-    private Float testerRate;
     private String orderLink;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
     private Long isViewed = 0L;
-    private int reviewCount = this.reviews.size();
-
+    private Long reviewCount = this.reviews.stream().count();
 
     @Builder
-    public Item(Long id, String name, String brandName, TextField description, Nutrient nutrient, Integer price, String image, NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink) {
+    public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image,
+                NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink, String allergyInfo) {
         this.id = id;
         this.name = name;
         this.brandName = brandName;
-        this.description = description;
-        this.nutrient = nutrient;
         this.price = price;
         this.image = image;
         this.isNew = isNew;
         this.isTesting = isTesting;
         this.category = category;
-        this.testerRate = testerRate;
         this.orderLink = orderLink;
+        this.allergyInfo = allergyInfo;
+    }
 
+
+    public Float getAvgRating(){
+        List<Float> scores = reviews.stream().map(Review::getScore).collect(Collectors.toList());
+        float totalScore = 0;
+        for (float score: scores){
+            totalScore += score;
+        }
+        return totalScore/reviewCount;
+    }
+
+    public void viewIncrease(){
+        this.isViewed++;
     }
 
 /*    // public 생성자 임시로 생성

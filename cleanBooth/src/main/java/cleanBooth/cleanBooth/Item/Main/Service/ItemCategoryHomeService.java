@@ -22,7 +22,7 @@ public class ItemCategoryHomeService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
-    public ItemResponseDto findItemListHome (String category_name, String orderBy){
+    public ItemResponseDto findItemListHomeByCategory (String category_name, String orderBy){
 
         List<Item> categoryItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class ItemCategoryHomeService {
         //정렬처리
         if (orderBy.equals("recommend")){ //추천순
             sortedItemList = categoryItemList.stream()
-                    .sorted(Comparator.comparing(Item::getTesterRate))
+                    .sorted(Comparator.comparing(Item::getAvgRating))
                     .toList();
             System.out.println("추천순으로 정렬");
         } else if (orderBy.equals("popular")) { //인기순 (조회순)
@@ -61,8 +61,45 @@ public class ItemCategoryHomeService {
                 .map(item -> new ItemDto(item))
                 .toList();
 
+
         System.out.println("response 데이터로 변환중");
         return new ItemResponseDto(myCategory.toString(), itemDtoList);
+    }
+
+    public ItemResponseDto findItemListHomeByNutrient (String nutrient, String orderBy){
+
+        List<Item> ingredientItemList = new ArrayList<>();
+        List<Item> sortedItemList = new ArrayList<>();
+
+        //영양성분으로 필터링
+        ingredientItemList = itemRepository.findAllByIngredientInfoContaining(nutrient);
+
+        //정렬처리
+        if (orderBy.equals("recommend")){ //추천순
+            sortedItemList = ingredientItemList.stream()
+                    .sorted(Comparator.comparing(Item::getAvgRating))
+                    .toList();
+            System.out.println("추천순으로 정렬");
+        } else if (orderBy.equals("popular")) { //인기순 (조회순)
+            sortedItemList = ingredientItemList.stream()
+                    .sorted(Comparator.comparing(Item::getIsViewed))
+                    .toList();
+            System.out.println("인기순으로 정렬");
+        }
+        else { //리뷰 많은 순
+            sortedItemList = ingredientItemList.stream()
+                    .sorted(Comparator.comparing(Item::getReviewCount))
+                    .toList();
+            System.out.println("리뷰 많은 순으로 정령");
+        }
+
+        List<ItemDto> itemDtoList = sortedItemList.stream()
+                .map(item -> new ItemDto(item))
+                .toList();
+
+
+        System.out.println("response 데이터로 변환중");
+        return new ItemResponseDto(nutrient, itemDtoList);
     }
 
 }

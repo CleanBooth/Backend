@@ -19,16 +19,18 @@ public class User {
     private String name;
     private String email;
     private String birthday;
+    private String birthyear;
     private String mobile;
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
     @Builder
-    public User(String name, String email, String birthday, String mobile, OAuthProvider oAuthProvider) {
+    public User(String name, String email, String birthday, String birthyear, String mobile, OAuthProvider oAuthProvider) {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
+        this.birthyear = birthyear;
         this.mobile = mobile;
         this.oAuthProvider = oAuthProvider;
     }
