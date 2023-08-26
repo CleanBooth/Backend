@@ -13,11 +13,11 @@ public class ItemController {
 
     private final ItemCategoryHomeService itemCategoryHomeService;
 
-    @GetMapping("items/category/{categoryName}/{orderBy}/")
+    @GetMapping("items/category/{categoryId}/{orderBy}/")
     public ItemResponseDto getItemListCategoryHome(
-            @PathVariable("categoryName")String categoryName,
+            @PathVariable("categoryId")String categoryId,
             @PathVariable("orderBy")String orderBy) {
-        return itemCategoryHomeService.findItemListHomeByCategory(categoryName, orderBy);
+        return itemCategoryHomeService.findItemListHomeByCategory(categoryId, orderBy);
     }
 
     @GetMapping("items/nutrient/{nutrientAttribute}/{orderBy}/")

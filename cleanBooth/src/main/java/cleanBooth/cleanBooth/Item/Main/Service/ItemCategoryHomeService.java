@@ -22,13 +22,13 @@ public class ItemCategoryHomeService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
-    public ItemResponseDto findItemListHomeByCategory (String category_name, String orderBy){
+    public ItemResponseDto findItemListHomeByCategory (Long categoryId, String orderBy){
 
         List<Item> categoryItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
 
         //카테고리로 필터링
-        Optional<Category> myCategory = categoryRepository.findByName(category_name);
+        Optional<Category> myCategory = categoryRepository.findById(categoryId);
 
         if (myCategory.isEmpty()){ //카테고리가 유효한 카테고리가 아닐때
             throw new IllegalStateException();
