@@ -1,14 +1,11 @@
 package cleanBooth.cleanBooth.tester;
 
-import cleanBooth.cleanBooth.domain.User;
 import cleanBooth.cleanBooth.repository.ReviewRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
 import cleanBooth.cleanBooth.tester.dto.TesterApplyGetDto;
-import cleanBooth.cleanBooth.tester.dto.TesterApplyPostDto;
 import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
 import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
 import cleanBooth.cleanBooth.tester.service.TesterService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -35,8 +32,8 @@ public class TesterController {
 
     /* 클린체험단 리스트 GET */
     @GetMapping
-    public List<TesterListRequest> getTestedItemTestersDTO() {
-        return testerService.getTestedItemTestersDTO();
+    public List<TesterListRequest> getAllTestersDTO() {
+        return testerService.getAllTestersDTO();
     }
 
     /* 체험단 1개 상세페이지 GET*/
