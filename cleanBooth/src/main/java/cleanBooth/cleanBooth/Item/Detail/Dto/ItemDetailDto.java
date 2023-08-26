@@ -14,7 +14,6 @@ public class ItemDetailDto {
     private Nutrient nutrient;
     private Integer price;
     private String image;
-    private NewStatus isNew;
     private Float avgRating;
     private String orderLink;
     private Category category;
@@ -30,7 +29,6 @@ public class ItemDetailDto {
         this.brandName = item.getBrandName();
         this.price = item.getPrice();
         this.image = item.getImage();
-        this.isNew = item.getIsNew();
         this.orderLink = item.getOrderLink();
         this.category = item.getCategory();
         this.avgRating = item.getAvgRating();
