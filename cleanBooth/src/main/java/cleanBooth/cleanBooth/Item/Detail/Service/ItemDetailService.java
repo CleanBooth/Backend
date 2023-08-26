@@ -49,12 +49,14 @@ public class ItemDetailService {
         } else if (orderBy.equals("oldest")) {
             sortedReviewList = reviews.stream().sorted(Comparator.comparing(Review::getUploadDate).reversed()).toList();
             System.out.println("오래된순으로 정렬");
-        } else if (accessToken != null){
+        } else if (accessToken != null && orderBy.equals("myReview")){
             Long memberId = authTokensGenerator.extractMemberId(accessToken);
             Optional<User> user = userRepository.findById(memberId);
             reviews = reviewRepository.findAllByUserAndItem(user.get(), item);
             sortedReviewList = reviews.stream().sorted(Comparator.comparing(Review::getUploadDate)).toList();
             System.out.println("나의 리뷰");
+        } else {
+            throw new RuntimeException("token or orderBy 오류");
         }
         List<ItemReviewDto> itemReviewDtoList = sortedReviewList.stream()
                 .map(review -> new ItemReviewDto(review)).toList();
