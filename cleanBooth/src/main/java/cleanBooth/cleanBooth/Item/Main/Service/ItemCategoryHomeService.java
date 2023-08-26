@@ -30,11 +30,13 @@ public class ItemCategoryHomeService {
         //카테고리로 필터링
         Optional<Category> myCategory = categoryRepository.findById(categoryId);
 
+        Category category;
         if (myCategory.isEmpty()){ //카테고리가 유효한 카테고리가 아닐때
             throw new IllegalStateException();
         }
         else {
-            categoryItemList = itemRepository.findAllByCategory(myCategory.get());
+            category = myCategory.get();
+            categoryItemList = itemRepository.findAllByCategory(category);
             System.out.println("카테고리로 item 찾는중");
         }
 
@@ -50,7 +52,7 @@ public class ItemCategoryHomeService {
                     .toList();
             System.out.println("인기순으로 정렬");
         }
-        else { //리뷰 많은 순
+        else if (orderBy.equals("manyReview")){ //리뷰 많은 순
             sortedItemList = categoryItemList.stream()
                     .sorted(Comparator.comparing(Item::getReviewCount))
                     .toList();
@@ -63,7 +65,7 @@ public class ItemCategoryHomeService {
 
 
         System.out.println("response 데이터로 변환중");
-        return new ItemResponseDto(myCategory.toString(), itemDtoList);
+        return new ItemResponseDto(category.getName(), itemDtoList);
     }
 
     public ItemResponseDto findItemListHomeByNutrient (String nutrient, String orderBy){

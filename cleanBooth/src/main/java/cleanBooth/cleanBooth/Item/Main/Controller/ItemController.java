@@ -15,7 +15,7 @@ public class ItemController {
 
     @GetMapping("items/category/{categoryId}/{orderBy}/")
     public ItemResponseDto getItemListCategoryHome(
-            @PathVariable("categoryId")String categoryId,
+            @PathVariable("categoryId")Long categoryId,
             @PathVariable("orderBy")String orderBy) {
         return itemCategoryHomeService.findItemListHomeByCategory(categoryId, orderBy);
     }
