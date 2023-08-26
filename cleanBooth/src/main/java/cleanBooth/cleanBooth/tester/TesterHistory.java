@@ -20,9 +20,6 @@ public class TesterHistory {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Review review;
-
     private String name;
 
     private String phoneNum;
@@ -33,23 +30,22 @@ public class TesterHistory {
 
     private boolean isWin;
 
-    private String option;
+    private String options;
 
     private boolean isReviewed;
 
     public TesterHistory() {
     }
 
-    public TesterHistory(Tester tester, User user, Review review, String name, String phoneNum, String address, String message, boolean isWin, String option, boolean isReviewed) {
+    public TesterHistory(Tester tester, User user, String name, String phoneNum, String address, String message, boolean isWin, String options, boolean isReviewed) {
         this.tester = tester;
         this.user = user;
-        this.review = review;
         this.name = name;
         this.phoneNum = phoneNum;
         this.address = address;
         this.message = message;
         this.isWin = false;
-        this.option = option;
+        this.options = options;
         this.isReviewed = false;
     }
 

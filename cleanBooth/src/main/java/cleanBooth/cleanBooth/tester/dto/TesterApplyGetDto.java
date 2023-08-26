@@ -11,16 +11,17 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TesterDetailRequest {
+public class TesterApplyGetDto {
     private boolean isTesting;
     private String itemName;
     private String itemImage;
     private String content;
     private LocalDate endDate;
-    private String detailImage;
+    private String options;
 
 
     public void setIsTesting(boolean testing) {
+        this.isTesting = true;
     }
 }
 
