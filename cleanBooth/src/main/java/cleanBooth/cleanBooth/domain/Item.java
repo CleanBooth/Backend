@@ -31,9 +31,6 @@ public class Item {
     private String image;
 
     @Enumerated(EnumType.STRING)
-    private NewStatus isNew;
-
-    @Enumerated(EnumType.STRING)
     private TestingStatus isTesting;
 
     private String orderLink;
@@ -46,13 +43,12 @@ public class Item {
 
     @Builder
     public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image,
-                NewStatus isNew, TestingStatus isTesting, Category category, Float testerRate, String orderLink, String allergyInfo) {
+                TestingStatus isTesting, Category category, Float testerRate, String orderLink, String allergyInfo) {
         this.id = id;
         this.name = name;
         this.brandName = brandName;
         this.price = price;
         this.image = image;
-        this.isNew = isNew;
         this.isTesting = isTesting;
         this.category = category;
         this.orderLink = orderLink;
