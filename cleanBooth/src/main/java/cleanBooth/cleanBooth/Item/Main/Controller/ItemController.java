@@ -20,7 +20,7 @@ public class ItemController {
         return itemCategoryHomeService.findItemListHomeByCategory(categoryId, orderBy);
     }
 
-    @GetMapping("items/nutrient/{nutrientAttribute}/{orderBy}/")
+    @GetMapping("items/nutrient/{nutrientId}/{orderBy}/")
     public ItemResponseDto getItemListNutrientHome(
             @PathVariable("nutrientId")Long nutrientId,
             @PathVariable("orderBy")String orderBy) {
