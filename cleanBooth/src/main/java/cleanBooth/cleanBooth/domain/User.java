@@ -13,9 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
     @Id @GeneratedValue
-    @Column(name = "USER_ID")
     private Long id;
-
     private String name;
     private String email;
     private String age;
