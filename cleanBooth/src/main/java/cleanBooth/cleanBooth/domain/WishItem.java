@@ -17,4 +17,9 @@ public class WishItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    public WishItem(Item item, User user){
+        this.item = item;
+        this.user = user;
+    }
 }

@@ -1,15 +1,17 @@
-package cleanBooth.cleanBooth.Item.Main.Service;
+package cleanBooth.cleanBooth.Item.Service;
 
-import cleanBooth.cleanBooth.Item.Main.Dto.ItemDto;
-import cleanBooth.cleanBooth.Item.Main.Dto.ItemResponseDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemResponseDto;
 import cleanBooth.cleanBooth.domain.Category;
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.User;
+import cleanBooth.cleanBooth.domain.WishItem;
 import cleanBooth.cleanBooth.repository.CategoryRepository;
 import cleanBooth.cleanBooth.repository.ItemRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
 import cleanBooth.cleanBooth.repository.WishItemRepository;
 import cleanBooth.cleanBooth.service.AuthTokensGenerator;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -130,6 +132,26 @@ public class ItemCategoryHomeService {
 
         System.out.println("response 데이터로 변환중");
         return new ItemResponseDto(nutrient.getName(), itemDtoList);
+    }
+
+    public int modifyWishItem(Long itemId, String accessToken){
+        if (accessToken == null){
+            return HttpServletResponseWrapper.SC_NOT_FOUND;
+        }
+        Long memberId = authTokensGenerator.extractMemberId(accessToken);
+        Optional<WishItem> optionalWishItem = wishItemRepository.findByItem_IdAndUser_Id(itemId, memberId);
+        if (optionalWishItem.isEmpty()){
+            Item item = itemRepository.findById(itemId).get();
+            User user = userRepository.findById(memberId).get();
+            WishItem wishItem = new WishItem(item, user);
+            wishItemRepository.save(wishItem);
+            return HttpServletResponseWrapper.SC_CREATED;
+        }
+        else {
+            WishItem wishItem = optionalWishItem.get();
+            wishItemRepository.delete(wishItem);
+            return HttpServletResponseWrapper.SC_ACCEPTED;
+        }
     }
 
 }

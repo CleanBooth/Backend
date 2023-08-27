@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Item.Detail.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.Item;
 

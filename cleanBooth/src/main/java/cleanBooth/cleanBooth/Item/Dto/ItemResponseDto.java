@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Item.Main.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

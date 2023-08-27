@@ -1,9 +1,9 @@
-package cleanBooth.cleanBooth.Item.Detail.Service;
+package cleanBooth.cleanBooth.Item.Service;
 
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemDetailResponseDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemRecipeDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemReviewDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.PostReviewDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemRecipeDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemDetailResponseDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemReviewDto;
+import cleanBooth.cleanBooth.Item.Dto.PostReviewDto;
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.Recipe;
 import cleanBooth.cleanBooth.domain.Review;
@@ -14,7 +14,6 @@ import cleanBooth.cleanBooth.repository.ReviewRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
 import cleanBooth.cleanBooth.service.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

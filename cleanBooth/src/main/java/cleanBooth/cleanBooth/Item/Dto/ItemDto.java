@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Item.Main.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.*;
 import jakarta.annotation.Nullable;
@@ -30,10 +30,8 @@ public class ItemDto {
 
     public void saveIsLiked(Optional<WishItem> wishItem){
         if (wishItem.isEmpty()){
-            this.isLiked = false;
+            this.isLiked = null;
         }
         else {this.isLiked = true;}
     }
-
-
 }
