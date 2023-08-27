@@ -1,5 +1,6 @@
 package cleanBooth.cleanBooth.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,7 +40,11 @@ public class Item {
     private Category category;
 
     private Long isViewed = 0L;
-    private Long reviewCount = this.reviews.stream().count();
+    private Long reviewCount = 0L;
+
+    @OneToMany(mappedBy = "item")
+    @Nullable
+    private List<WishItem> likedUser;
 
     @Builder
     public Item(Long id, String name, String brandName, String description, String nutrient, Integer price, String image,
@@ -62,11 +67,18 @@ public class Item {
         for (float score: scores){
             totalScore += score;
         }
-        return totalScore/reviewCount;
+        if (reviewCount == 0){
+            return (float) 0;
+        }
+        else return totalScore/reviewCount;
     }
 
     public void viewIncrease(){
         this.isViewed++;
+    }
+
+    public void updateReviewCount(){
+        this.reviewCount = reviews.stream().count();
     }
 
 /*    // public 생성자 임시로 생성

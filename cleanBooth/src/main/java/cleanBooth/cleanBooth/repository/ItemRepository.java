@@ -12,8 +12,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAllByCategory(Category category);
 
-    List<Item> findAllByIngredientInfoContaining(String ingredient);
-
     List<Item> findByIsTestingTrue();
 
 }

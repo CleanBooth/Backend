@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Item.Detail.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.*;
 import lombok.Getter;
@@ -31,7 +31,7 @@ public class ItemDetailDto {
         this.image = item.getImage();
         this.orderLink = item.getOrderLink();
         this.category = item.getCategory();
-        this.avgRating = item.getAvgRating();
+        this.avgRating = (item.getReviewCount()==0)?0:item.getAvgRating();
         this.nutrient = item.getNutrientInfo();
         this.allergyInfo = item.getAllergyInfo();
         this.ingredientInfo = item.getIngredientInfo();
