@@ -31,6 +31,7 @@ public class OAuthLoginService {
         User user = User.builder()
                 .name(oAuthInfoResponse.getName())
                 .email(oAuthInfoResponse.getEmail())
+                .age(oAuthInfoResponse.getAge())
                 .birthday(oAuthInfoResponse.getBirthDay())
                 .birthyear(oAuthInfoResponse.getBirthYear())
                 .mobile(oAuthInfoResponse.getMobile())
