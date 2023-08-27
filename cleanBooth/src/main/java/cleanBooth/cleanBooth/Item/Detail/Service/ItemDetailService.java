@@ -81,7 +81,7 @@ public class ItemDetailService {
         Optional<Item> optionalItem = itemRepository.findById(itemId);
         Long memberId = authTokensGenerator.extractMemberId(accessToken);
         PostReviewDto postReviewDto = new PostReviewDto((String) map.get("goodDescription"),
-                (String) map.get("badDescription"), (Float) map.get("score"));
+                (String) map.get("badDescription"), (Float) map.get("score"), (List<String>) map.get("image"));
 
 
         Optional<User> optionalUser = userRepository.findById(memberId);
@@ -102,6 +102,7 @@ public class ItemDetailService {
         Review review = new Review(item, user, postReviewDto.getGoodDescription(), postReviewDto.getBadDescription(),
                 postReviewDto.getScore());
         reviewRepository.save(review);
+        item.updateReviewCount();
 
         return postReviewDto;
     }
