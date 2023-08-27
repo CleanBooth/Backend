@@ -32,6 +32,7 @@ public class OAuthLoginService {
                 .name(oAuthInfoResponse.getName())
                 .email(oAuthInfoResponse.getEmail())
                 .birthday(oAuthInfoResponse.getBirthDay())
+                .birthyear(oAuthInfoResponse.getBirthYear())
                 .mobile(oAuthInfoResponse.getMobile())
                 .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();

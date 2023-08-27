@@ -4,13 +4,11 @@ import cleanBooth.cleanBooth.domain.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
-
 @Getter
 @NoArgsConstructor
 public class ItemDto {
 
-    private Long item_id;
+    private Long itemId;
     private String name;
     private String brandName;
     private String image;
@@ -19,7 +17,7 @@ public class ItemDto {
 
 
     public ItemDto(Item item){
-        this.item_id = item.getId();
+        this.itemId = item.getId();
         this.name = item.getName();
         this.brandName = item.getBrandName();
         this.image = item.getImage();

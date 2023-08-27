@@ -13,18 +13,18 @@ public class ItemController {
 
     private final ItemCategoryHomeService itemCategoryHomeService;
 
-    @GetMapping("items/category/{categoryName}/{orderBy}/")
+    @GetMapping("items/category/{categoryId}/{orderBy}/")
     public ItemResponseDto getItemListCategoryHome(
-            @PathVariable("categoryName")String categoryName,
+            @PathVariable("categoryId")Long categoryId,
             @PathVariable("orderBy")String orderBy) {
-        return itemCategoryHomeService.findItemListHomeByCategory(categoryName, orderBy);
+        return itemCategoryHomeService.findItemListHomeByCategory(categoryId, orderBy);
     }
 
-    @GetMapping("items/nutrient/{nutrientAttribute}/{orderBy}/")
+    @GetMapping("items/nutrient/{nutrientId}/{orderBy}/")
     public ItemResponseDto getItemListNutrientHome(
-            @PathVariable("nutrientAttribute")String nutrientAttribute,
+            @PathVariable("nutrientId")Long nutrientId,
             @PathVariable("orderBy")String orderBy) {
-        return itemCategoryHomeService.findItemListHomeByNutrient(nutrientAttribute, orderBy);
+        return itemCategoryHomeService.findItemListHomeByNutrient(nutrientId, orderBy);
     }
 
 }
