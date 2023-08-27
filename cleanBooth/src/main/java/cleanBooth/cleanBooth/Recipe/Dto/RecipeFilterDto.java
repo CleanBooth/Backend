@@ -10,10 +10,12 @@ public class RecipeFilterDto {
     private String name;
     private String writer;
     private Boolean isLiked;
+    private String image;
 
     public RecipeFilterDto(Recipe recipe){
         this.name = recipe.getName();
         this.writer = recipe.getRecipeWriter().getName();
         this.isLiked = recipe.getIsLike();
+        this.image = recipe.getImage();
     }
 }

@@ -52,13 +52,17 @@ select * from recipe_category;
 select * from recipe;
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
 values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1);
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
+values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2);
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
+values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1);
 
 select * from recipe;
 
 select * from notice;
 
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (1, '2023.08.27', '되는걸까...', '됐으면 좋겠당ㅠ', '누리최', 1);
+values (1, '2023.08.27', '내용1', '제목1', '누리최', 1);
 
 select * from notice;
 
@@ -68,7 +72,9 @@ values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
 
-select * from notice;]]></console>
+select * from notice;
+
+select * from recipe;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
