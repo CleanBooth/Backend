@@ -4,6 +4,8 @@ import cleanBooth.cleanBooth.domain.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 @Getter
 @NoArgsConstructor
 public class ItemDetailDto {
@@ -16,12 +18,13 @@ public class ItemDetailDto {
     private String image;
     private Float avgRating;
     private String orderLink;
-    private Category category;
-    private Boolean isCleaned;
-    private Boolean isSuperior;
+//    private Boolean isCleaned;
+//    private Boolean isSuperior;
     private Boolean cleanPremium;
     private String allergyInfo;
     private String ingredientInfo;
+    private Long reviewCount;
+    private Boolean isLiked;
 
     public ItemDetailDto(Item item){
         this.itemId = item.getId();
@@ -30,14 +33,20 @@ public class ItemDetailDto {
         this.price = item.getPrice();
         this.image = item.getImage();
         this.orderLink = item.getOrderLink();
-        this.category = item.getCategory();
         this.avgRating = (item.getReviewCount()==0)?0:item.getAvgRating();
-        this.nutrient = item.getNutrientInfo();
         this.allergyInfo = item.getAllergyInfo();
         this.ingredientInfo = item.getIngredientInfo();
-
-        this.isCleaned = true;
-        this.isSuperior = (item.getAvgRating() < 3.0)?false:true;
+        this.nutrient = item.getNutrientInfo();
+//        this.isCleaned = true;
+//        this.isSuperior = (item.getAvgRating() < 3.0)?false:true;
         this.cleanPremium = (item.getAvgRating() > 3.5)?true:false;
+        this.reviewCount = item.getReviewCount();
+    }
+
+    public void saveIsLiked(Optional<WishItem> wishItem){
+        if (wishItem.isEmpty()){
+            this.isLiked = null;
+        }
+        else {this.isLiked = true;}
     }
 }

@@ -2,8 +2,10 @@ package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.Recipe;
 import cleanBooth.cleanBooth.domain.Site;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 public class ItemRecipeDto {
 
