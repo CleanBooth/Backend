@@ -1,8 +1,10 @@
 package cleanBooth.cleanBooth.domain;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
 
 @Embeddable
+@Getter
 public class Nutrient {
     private String salt;
     private String carbohydrate;
