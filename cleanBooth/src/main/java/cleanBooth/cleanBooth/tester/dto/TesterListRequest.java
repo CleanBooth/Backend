@@ -9,7 +9,6 @@ public class TesterListRequest {
     private String itemName;
     private String itemImage;
     private LocalDate endDate;
-
     private boolean isTesting;
     // 생성자
 

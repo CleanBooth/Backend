@@ -22,23 +22,21 @@ public class TesterService {
     private ItemRepository itemRepository;
 
     /* 체험단 리스트 가져오기 */
-    public List<TesterListRequest> getTestedItemTestersDTO() {
-        List<Item> testedItems = itemRepository.findByIsTestingTrue();
+    public List<TesterListRequest> getAllTestersDTO() {
+        List<Tester> allTesters = testerRepository.findAll();
         List<TesterListRequest> testerListRequests = new ArrayList<>();
 
-        for (Item item : testedItems) {
-            List<Tester> testersForItem = testerRepository.findByItem(item);
+        for (Tester tester : allTesters) {
+            Item item = tester.getItem(); // Assuming there is a reference to the associated item in Tester entity
 
-            for (Tester tester : testersForItem) {
-                TesterListRequest testerListRequest = new TesterListRequest();
-                testerListRequest.setItemName(item.getName());
-                testerListRequest.setItemImage(item.getImage());
-                testerListRequest.setEndDate(tester.getEndDate());
-                testerListRequest.setIsTesting(tester.isTesting());
-                // startDate, endDate 등의 필드 설정
+            TesterListRequest testerListRequest = new TesterListRequest();
+            testerListRequest.setItemName(item.getName());
+            testerListRequest.setItemImage(item.getImage());
+            testerListRequest.setEndDate(tester.getEndDate());
+            testerListRequest.setIsTesting(tester.isTesting());
+            // startDate, endDate 등의 필드 설정
 
-                testerListRequests.add(testerListRequest);
-            }
+            testerListRequests.add(testerListRequest);
         }
 
         return testerListRequests;
