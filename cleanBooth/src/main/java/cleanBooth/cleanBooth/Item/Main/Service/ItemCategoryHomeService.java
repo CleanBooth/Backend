@@ -22,19 +22,21 @@ public class ItemCategoryHomeService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
-    public ItemResponseDto findItemListHomeByCategory (String category_name, String orderBy){
+    public ItemResponseDto findItemListHomeByCategory (Long categoryId, String orderBy){
 
         List<Item> categoryItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
 
         //카테고리로 필터링
-        Optional<Category> myCategory = categoryRepository.findByName(category_name);
+        Optional<Category> myCategory = categoryRepository.findById(categoryId);
 
+        Category category;
         if (myCategory.isEmpty()){ //카테고리가 유효한 카테고리가 아닐때
             throw new IllegalStateException();
         }
         else {
-            categoryItemList = itemRepository.findAllByCategory(myCategory.get());
+            category = myCategory.get();
+            categoryItemList = itemRepository.findAllByCategory(category);
             System.out.println("카테고리로 item 찾는중");
         }
 
@@ -50,7 +52,7 @@ public class ItemCategoryHomeService {
                     .toList();
             System.out.println("인기순으로 정렬");
         }
-        else { //리뷰 많은 순
+        else if (orderBy.equals("manyReview")){ //리뷰 많은 순
             sortedItemList = categoryItemList.stream()
                     .sorted(Comparator.comparing(Item::getReviewCount))
                     .toList();
@@ -63,31 +65,40 @@ public class ItemCategoryHomeService {
 
 
         System.out.println("response 데이터로 변환중");
-        return new ItemResponseDto(myCategory.toString(), itemDtoList);
+        return new ItemResponseDto(category.getName(), itemDtoList);
     }
 
-    public ItemResponseDto findItemListHomeByNutrient (String nutrient, String orderBy){
+    public ItemResponseDto findItemListHomeByNutrient (Long nutrientId, String orderBy){
 
-        List<Item> nutrientItemList = new ArrayList<>();
+        List<Item> ingredientItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
 
-        //영양성분으로 필터링
-        nutrientItemList = itemRepository.findAllByNutrientContaining(nutrient);
+        Optional<Category> optionalCategory = categoryRepository.findById(nutrientId);  //영양성분으로 필터링
+
+        Category nutrient;
+        if (optionalCategory.isEmpty()){ //영양성분이 유효한 카테고리가 아닐때
+            throw new IllegalStateException();
+        }
+        else {
+            nutrient = optionalCategory.get();
+            ingredientItemList = itemRepository.findAllByCategory(nutrient);
+            System.out.println("영양성분로 item 찾는중");
+        }
 
         //정렬처리
         if (orderBy.equals("recommend")){ //추천순
-            sortedItemList = nutrientItemList.stream()
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getAvgRating))
                     .toList();
             System.out.println("추천순으로 정렬");
         } else if (orderBy.equals("popular")) { //인기순 (조회순)
-            sortedItemList = nutrientItemList.stream()
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getIsViewed))
                     .toList();
             System.out.println("인기순으로 정렬");
         }
-        else { //리뷰 많은 순
-            sortedItemList = nutrientItemList.stream()
+        else if (orderBy.equals("manyReview")) { //리뷰 많은 순
+            sortedItemList = ingredientItemList.stream()
                     .sorted(Comparator.comparing(Item::getReviewCount))
                     .toList();
             System.out.println("리뷰 많은 순으로 정령");
@@ -99,7 +110,7 @@ public class ItemCategoryHomeService {
 
 
         System.out.println("response 데이터로 변환중");
-        return new ItemResponseDto(nutrient, itemDtoList);
+        return new ItemResponseDto(nutrient.getName(), itemDtoList);
     }
 
 }
