@@ -57,6 +57,16 @@ values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghett
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
 values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1);
 
+
+delete from recipe;
+select * from recipe;
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'Kimchi1.jpg');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'Spaghetti1.png');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'AppleJam.png');
+
 select * from recipe;
 
 select * from notice;
