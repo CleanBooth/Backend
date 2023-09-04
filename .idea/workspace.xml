@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: 이전글, 다음글 없을 경우 반환값 수정">
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: 더미데이터 이미지 컬럼 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/Dto/RecipeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/Dto/RecipeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/Dto/RecipeFilterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/Dto/RecipeFilterDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Recipe/RecipeWriterDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/domain/Recipe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692272506690</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="update: '/recipes' 이미지 string 추가, 더미데이터 추가">
+      <created>1693110751773</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1693110751773</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,7 +379,8 @@
     <MESSAGE value="update: '/recipe/writer/{writer_name' 기능 추가&#10;        '/recipe/{recipeid}' 기능 추가" />
     <MESSAGE value="feat: Notice repository, Notice Dto, Notice Controller 추가&#10;update: '/notices', '/notice/title/{title_name}',&#10;'/notice/writer/{writer_name}', '/notice/{noticeId}' 기능구현 완료" />
     <MESSAGE value="update: 이전글, 다음글 없을 경우 반환값 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: 이전글, 다음글 없을 경우 반환값 수정" />
+    <MESSAGE value="update: '/recipes' 이미지 string 추가, 더미데이터 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: '/recipes' 이미지 string 추가, 더미데이터 추가" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
