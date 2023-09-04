@@ -84,6 +84,7 @@ public class NoticeController {
         }
     }
 
+    //문제 해결 완료
     @GetMapping("/notice/{noticeNum}")
     public NoticeContentResponse noticeContent(@PathVariable Long noticeNum){
         Notice notice = noticeRepository.getContent(noticeNum);

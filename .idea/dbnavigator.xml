@@ -61,11 +61,11 @@ values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹',
 delete from recipe;
 select * from recipe;
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'Kimchi1.jpg');
+values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'https://t3.ftcdn.net/jpg/04/66/99/64/360_F_466996463_1SclmmBcD4BmsFCH3odIQxUT7l7Y6E0K.jpg');
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'Spaghetti1.png');
+values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVtzHmKfphZSj_aq6P3o2AlBm3tzJuwV32Cd0mVTU&s');
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'AppleJam.png');
+values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt8temYrqxpvPW5Yz3zxNAc6aHoFvZ0gCqriTh7Vyvg&s');
 
 select * from recipe;
 
@@ -73,8 +73,6 @@ select * from notice;
 
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (1, '2023.08.27', '내용1', '제목1', '누리최', 1);
-
-select * from notice;
 
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
@@ -84,7 +82,26 @@ values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
 
 select * from notice;
 
-select * from recipe;]]></console>
+select * from recipe;
+
+delete from notice;
+
+select * from notice;
+
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (0, '2023.08.27', '내용0', '제목0', '누리최', 1);
+
+
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (1, '2023.08.27', '내용1', '제목1', '누리최', 1);
+
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
+
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
+
+select * from notice;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
