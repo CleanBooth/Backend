@@ -1,10 +1,12 @@
 package cleanBooth.cleanBooth.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +29,10 @@ public class Review {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date uploadDate;
+
+    @OneToMany(mappedBy = "review")
+    @Nullable
+    private List<ReviewPhoto> photos;
 
     @Builder
     public Review(Item item, User user, String goodDescription, String badDescription, Float score) {

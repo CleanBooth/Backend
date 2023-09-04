@@ -1,8 +1,11 @@
-package cleanBooth.cleanBooth.Item.Main.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.*;
+import jakarta.annotation.Nullable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.Optional;
 
 @Getter
 @NoArgsConstructor
@@ -14,7 +17,7 @@ public class ItemDto {
     private String image;
     private Float rating;
     private Long reviewCount;
-
+    private Boolean isLiked;
 
     public ItemDto(Item item){
         this.itemId = item.getId();
@@ -25,5 +28,10 @@ public class ItemDto {
         this.reviewCount = item.getReviewCount();
     }
 
-
+    public void saveIsLiked(Optional<WishItem> wishItem){
+        if (wishItem.isEmpty()){
+            this.isLiked = null;
+        }
+        else {this.isLiked = true;}
+    }
 }

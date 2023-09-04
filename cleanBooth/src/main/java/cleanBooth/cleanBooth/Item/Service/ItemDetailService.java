@@ -1,20 +1,10 @@
-package cleanBooth.cleanBooth.Item.Detail.Service;
+package cleanBooth.cleanBooth.Item.Service;
 
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemDetailResponseDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemRecipeDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.ItemReviewDto;
-import cleanBooth.cleanBooth.Item.Detail.Dto.PostReviewDto;
-import cleanBooth.cleanBooth.domain.Item;
-import cleanBooth.cleanBooth.domain.Recipe;
-import cleanBooth.cleanBooth.domain.Review;
-import cleanBooth.cleanBooth.domain.User;
-import cleanBooth.cleanBooth.repository.ItemRepository;
-import cleanBooth.cleanBooth.repository.RecipeRepository;
-import cleanBooth.cleanBooth.repository.ReviewRepository;
-import cleanBooth.cleanBooth.repository.UserRepository;
+import cleanBooth.cleanBooth.Item.Dto.*;
+import cleanBooth.cleanBooth.domain.*;
+import cleanBooth.cleanBooth.repository.*;
 import cleanBooth.cleanBooth.service.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +19,7 @@ public class ItemDetailService {
     private final RecipeRepository recipeRepository;
     private final AuthTokensGenerator authTokensGenerator;
     private final UserRepository userRepository;
+    private final WishItemRepository wishItemRepository;
 
     public ItemDetailResponseDto findItemDetails(Long itemId, String orderBy, String accessToken) { // 제품 상세페이지
         Optional<Item> optionalItem = itemRepository.findById(itemId);
@@ -39,8 +30,15 @@ public class ItemDetailService {
         } else {
             item = optionalItem.get();
         }
+        ItemDetailDto itemDetailDto = new ItemDetailDto(item);
         List<Review> reviews = reviewRepository.findAllByItem_Id(itemId); // 아이템으로 리뷰 가져오기
         List<Review> sortedReviewList = new ArrayList<>();
+
+        if (accessToken != null){
+            Long memberId = authTokensGenerator.extractMemberId(accessToken);
+            Optional<WishItem> optionalWishItem = wishItemRepository.findByItem_IdAndUser_Id(itemId, memberId);
+            itemDetailDto.saveIsLiked(optionalWishItem);
+        }
 
         //정렬 처리
         if (orderBy.equals("latest")) {
@@ -66,7 +64,7 @@ public class ItemDetailService {
         List<Recipe> recipes = new ArrayList<>();
         long maxNumber = recipeRepository.findAll().stream().count();
         for (int i = 0; i < 3; i++) {
-            recipes.add(recipeRepository.findByID(random.nextLong(maxNumber)));
+            recipes.add(recipeRepository.findByID(random.nextLong(maxNumber)+1));
         }
 
         List<ItemRecipeDto> itemRecipeDtoList = recipes.stream()
@@ -74,14 +72,14 @@ public class ItemDetailService {
 
         item.viewIncrease();  //조회수 상승
 
-        return new ItemDetailResponseDto(item, itemReviewDtoList, itemRecipeDtoList);
+        return new ItemDetailResponseDto(itemDetailDto, itemReviewDtoList, itemRecipeDtoList);
     }
 
     public PostReviewDto postReviewDto(Long itemId, HashMap<String, Object> map, String accessToken){
         Optional<Item> optionalItem = itemRepository.findById(itemId);
         Long memberId = authTokensGenerator.extractMemberId(accessToken);
         PostReviewDto postReviewDto = new PostReviewDto((String) map.get("goodDescription"),
-                (String) map.get("badDescription"), (Float) map.get("score"));
+                (String) map.get("badDescription"), (Float) map.get("score"), (List<String>) map.get("image"));
 
 
         Optional<User> optionalUser = userRepository.findById(memberId);
@@ -102,6 +100,7 @@ public class ItemDetailService {
         Review review = new Review(item, user, postReviewDto.getGoodDescription(), postReviewDto.getBadDescription(),
                 postReviewDto.getScore());
         reviewRepository.save(review);
+        item.updateReviewCount();
 
         return postReviewDto;
     }

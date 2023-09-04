@@ -1,11 +1,17 @@
-package cleanBooth.cleanBooth.Item.Main.Service;
+package cleanBooth.cleanBooth.Item.Service;
 
-import cleanBooth.cleanBooth.Item.Main.Dto.ItemDto;
-import cleanBooth.cleanBooth.Item.Main.Dto.ItemResponseDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemDto;
+import cleanBooth.cleanBooth.Item.Dto.ItemResponseDto;
 import cleanBooth.cleanBooth.domain.Category;
 import cleanBooth.cleanBooth.domain.Item;
+import cleanBooth.cleanBooth.domain.User;
+import cleanBooth.cleanBooth.domain.WishItem;
 import cleanBooth.cleanBooth.repository.CategoryRepository;
 import cleanBooth.cleanBooth.repository.ItemRepository;
+import cleanBooth.cleanBooth.repository.UserRepository;
+import cleanBooth.cleanBooth.repository.WishItemRepository;
+import cleanBooth.cleanBooth.service.AuthTokensGenerator;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +27,11 @@ import java.util.Optional;
 public class ItemCategoryHomeService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
+    private final AuthTokensGenerator authTokensGenerator;
+    private final UserRepository userRepository;
+    private final WishItemRepository wishItemRepository;
 
-    public ItemResponseDto findItemListHomeByCategory (Long categoryId, String orderBy){
+    public ItemResponseDto findItemListHomeByCategory (Long categoryId, String orderBy, String accessToken){
 
         List<Item> categoryItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
@@ -63,12 +72,18 @@ public class ItemCategoryHomeService {
                 .map(item -> new ItemDto(item))
                 .toList();
 
+        if (accessToken != null){
+            Long memberId = authTokensGenerator.extractMemberId(accessToken);
+            for(ItemDto itemDto: itemDtoList){
+                itemDto.saveIsLiked(wishItemRepository.findByItem_IdAndUser_Id(itemDto.getItemId(), memberId));
+            }
+        }
 
         System.out.println("response 데이터로 변환중");
         return new ItemResponseDto(category.getName(), itemDtoList);
     }
 
-    public ItemResponseDto findItemListHomeByNutrient (Long nutrientId, String orderBy){
+    public ItemResponseDto findItemListHomeByNutrient (Long nutrientId, String orderBy, String accessToken){
 
         List<Item> ingredientItemList = new ArrayList<>();
         List<Item> sortedItemList = new ArrayList<>();
@@ -108,9 +123,35 @@ public class ItemCategoryHomeService {
                 .map(item -> new ItemDto(item))
                 .toList();
 
+        if (accessToken != null){
+            Long memberId = authTokensGenerator.extractMemberId(accessToken);
+            for(ItemDto itemDto: itemDtoList){
+                itemDto.saveIsLiked(wishItemRepository.findByItem_IdAndUser_Id(itemDto.getItemId(), memberId));
+            }
+        }
 
         System.out.println("response 데이터로 변환중");
         return new ItemResponseDto(nutrient.getName(), itemDtoList);
+    }
+
+    public int modifyWishItem(Long itemId, String accessToken){
+        if (accessToken == null){
+            return HttpServletResponseWrapper.SC_NOT_FOUND;
+        }
+        Long memberId = authTokensGenerator.extractMemberId(accessToken);
+        Optional<WishItem> optionalWishItem = wishItemRepository.findByItem_IdAndUser_Id(itemId, memberId);
+        if (optionalWishItem.isEmpty()){
+            Item item = itemRepository.findById(itemId).get();
+            User user = userRepository.findById(memberId).get();
+            WishItem wishItem = new WishItem(item, user);
+            wishItemRepository.save(wishItem);
+            return HttpServletResponseWrapper.SC_CREATED;
+        }
+        else {
+            WishItem wishItem = optionalWishItem.get();
+            wishItemRepository.delete(wishItem);
+            return HttpServletResponseWrapper.SC_ACCEPTED;
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Item.Detail.Dto;
+package cleanBooth.cleanBooth.Item.Dto;
 
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.Review;
@@ -7,10 +7,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@Getter
 @NoArgsConstructor
 public class ItemReviewDto {
 

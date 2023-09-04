@@ -3,8 +3,6 @@ package cleanBooth.cleanBooth.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -16,9 +14,8 @@ public class Category {
     private String name;
 
     @Builder
-    public Category(String name, Category parent){
+    public Category(String name){
         this.name = name;
     }
-
 
 }
