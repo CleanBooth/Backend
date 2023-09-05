@@ -7,8 +7,10 @@ import cleanBooth.cleanBooth.domain.User;
 import cleanBooth.cleanBooth.domain.AuthTokens;
 import cleanBooth.cleanBooth.domain.OAuthLoginParams;
 import cleanBooth.cleanBooth.domain.OAuthInfoResponse;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class OAuthLoginService {
     private final UserRepository userRepository;
