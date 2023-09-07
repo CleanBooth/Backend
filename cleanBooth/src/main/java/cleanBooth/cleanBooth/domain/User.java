@@ -2,7 +2,6 @@ package cleanBooth.cleanBooth.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +11,29 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_ID")
-    @NotNull
+    @Column(name = "user_id")
     private Long id;
 
+    @Column
     private String name;
+
+    @Column
     private String email;
+
+    @Column
     private String age;
+
+    @Column
     private String birthday;
+
+    @Column
     private String birthyear;
+
+    @Column
     private String mobile;
 
     @Enumerated(EnumType.STRING)
+    @Column
     private OAuthProvider oAuthProvider;
 
     @Builder
