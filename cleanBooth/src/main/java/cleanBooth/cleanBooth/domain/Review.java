@@ -24,7 +24,7 @@ public class Review {
 
     private String goodDescription;
     private String badDescription;
-    private Float score;
+    private Double score;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
@@ -35,7 +35,7 @@ public class Review {
     private List<ReviewPhoto> photos;
 
     @Builder
-    public Review(Item item, User user, String goodDescription, String badDescription, Float score) {
+    public Review(Item item, User user, String goodDescription, String badDescription, Double score) {
         this.item = item;
         this.user = user;
         this.goodDescription = goodDescription;

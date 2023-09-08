@@ -20,7 +20,7 @@ public class ItemReviewDto {
     private String userGeneration;
     private String goodDescription;
     private String badDescription;
-    private Float score;
+    private Double score;
     private String uploadDate;
 
     public ItemReviewDto(Review review){

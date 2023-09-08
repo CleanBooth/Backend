@@ -20,6 +20,7 @@ public class ItemDetailService {
     private final AuthTokensGenerator authTokensGenerator;
     private final UserRepository userRepository;
     private final WishItemRepository wishItemRepository;
+    private final ReviewPhotoRepository reviewPhotoRepository;
 
     public ItemDetailResponseDto findItemDetails(Long itemId, String orderBy, String accessToken) { // 제품 상세페이지
         Optional<Item> optionalItem = itemRepository.findById(itemId);
@@ -79,7 +80,7 @@ public class ItemDetailService {
         Optional<Item> optionalItem = itemRepository.findById(itemId);
         Long memberId = authTokensGenerator.extractMemberId(accessToken);
         PostReviewDto postReviewDto = new PostReviewDto((String) map.get("goodDescription"),
-                (String) map.get("badDescription"), (Float) map.get("score"), (List<String>) map.get("image"));
+                (String) map.get("badDescription"), (Double) map.get("score"), (List<String>) map.get("image"));
 
 
         Optional<User> optionalUser = userRepository.findById(memberId);
@@ -92,7 +93,7 @@ public class ItemDetailService {
         }
 
         Item item;
-        if (optionalItem.isEmpty()) {  // 찾는 item이 없으면 오류 발생
+        if (optionalItem.isEmpty()) {  // 찾는 item 이 없으면 오류 발생
             throw new IllegalStateException();
         } else {
             item = optionalItem.get();
@@ -101,6 +102,11 @@ public class ItemDetailService {
                 postReviewDto.getScore());
         reviewRepository.save(review);
         item.updateReviewCount();
+
+        for (int i = 0; i < postReviewDto.getPhotos().size(); i++) {
+            ReviewPhoto reviewPhoto = new ReviewPhoto(review, postReviewDto.getPhotos().get(i));
+            reviewPhotoRepository.save(reviewPhoto);
+        }
 
         return postReviewDto;
     }
