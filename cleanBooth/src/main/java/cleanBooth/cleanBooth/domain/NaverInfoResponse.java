@@ -39,7 +39,7 @@ public class NaverInfoResponse implements OAuthInfoResponse {
 
     @Override
     public String getAge() {
-        return response.mobile;
+        return response.age;
     }
 
     @Override
