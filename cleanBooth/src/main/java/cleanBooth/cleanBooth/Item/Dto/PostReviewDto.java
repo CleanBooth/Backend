@@ -10,11 +10,11 @@ import java.util.List;
 public class PostReviewDto {
     private String goodDescription;
     private String badDescription;
-    private Float score;
+    private Double score;
     private List<String> photos;
 
     @Builder
-    public PostReviewDto(String goodDescription, String badDescription, Float score, List<String> image){
+    public PostReviewDto(String goodDescription, String badDescription, Double score, List<String> image){
         this.goodDescription = goodDescription;
         this.badDescription = badDescription;
         this.score = score;

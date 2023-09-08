@@ -62,9 +62,9 @@ public class Item {
 
 
     public Float getAvgRating(){
-        List<Float> scores = reviews.stream().map(Review::getScore).collect(Collectors.toList());
+        List<Double> scores = reviews.stream().map(Review::getScore).collect(Collectors.toList());
         float totalScore = 0;
-        for (float score: scores){
+        for (Double score: scores){
             totalScore += score;
         }
         if (reviewCount == 0){
