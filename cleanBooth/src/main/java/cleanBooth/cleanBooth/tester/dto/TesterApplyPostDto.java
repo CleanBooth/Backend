@@ -15,7 +15,5 @@ public class TesterApplyPostDto {
     private String phoneNum;
     private String message;
     private String options;
-
-
     private Long testerId;
 }

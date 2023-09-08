@@ -1,10 +1,11 @@
 package cleanBooth.cleanBooth.tester;
 
-import cleanBooth.cleanBooth.domain.Review;
 import cleanBooth.cleanBooth.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Optional;
 
 @Entity
 @Getter @Setter
@@ -49,11 +50,12 @@ public class TesterHistory {
         this.isReviewed = false;
     }
 
-    public void doWin() {
-        this.isWin = true;
+    public void changeWin() {
+        this.isWin = !isWin;
     }
 
-    public void Reviewed() {
-        this.isReviewed = true;
+    public void changeReviewed() {
+        this.isReviewed = !isReviewed;
     }
+
 }
