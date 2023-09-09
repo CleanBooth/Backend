@@ -16,7 +16,7 @@ public class ItemDetailDto {
     private Nutrient nutrient;
     private Integer price;
     private String image;
-    private Float avgRating;
+    private Double avgRating;
     private String orderLink;
 //    private Boolean isCleaned;
 //    private Boolean isSuperior;

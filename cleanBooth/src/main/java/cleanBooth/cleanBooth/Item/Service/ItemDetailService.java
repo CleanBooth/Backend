@@ -12,7 +12,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class ItemDetailService {
     private final ItemRepository itemRepository;
     private final ReviewRepository reviewRepository;
