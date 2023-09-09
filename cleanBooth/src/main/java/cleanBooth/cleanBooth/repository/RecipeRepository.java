@@ -64,7 +64,7 @@ public class RecipeRepository {
 
     //site의 writer 기준으로 recipe return
     public List<String> findBySite(Site site){
-        String hql = "select r.recipeWriter.name from Recipe r where r.site = :site";
+        String hql = "select DISTINCT r.recipeWriter.name from Recipe r where r.site = :site";
         TypedQuery<String> query = entityManager.createQuery(hql, String.class);
         query.setParameter("site", site);
 
@@ -83,19 +83,19 @@ public class RecipeRepository {
         return writerList;
     }
 
-    public List<Recipe> getRecipeByWriter(String writer_name){
-        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name";
+    //writer 검색
+    public List<Recipe> getRecipeSearchWriterByYoutube(String writer_name){
+        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name and r.site = 'Youtube'";
         TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
         query.setParameter("writer_name", writer_name);
 
-        List<Recipe> recipeList = query.getResultList();
+        List<Recipe> recipeWriterDtos = query.getResultList();
 
-        return recipeList;
+        return recipeWriterDtos;
     }
 
-    //writer 검색
-    public List<Recipe> getRecipeSearchWriter(String writer_name){
-        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name";
+    public List<Recipe> getRecipeSearchWriterByBlog(String writer_name){
+        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name and r.site = 'Blog'";
         TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
         query.setParameter("writer_name", writer_name);
 

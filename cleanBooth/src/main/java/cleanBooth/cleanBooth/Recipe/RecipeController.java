@@ -81,9 +81,29 @@ public class RecipeController {
         return response;
     }
 
-    @GetMapping("/recipe/writer/{writer_name}")
-    public RecipeWriterResponse findByWriter(@PathVariable String writer_name){
-        List<Recipe> recipelist = recipeRepository.getRecipeSearchWriter(writer_name);
+    @GetMapping("/recipe/blog_writer/{writer_name}")
+    public RecipeWriterResponse findByBlogWriter(@PathVariable String writer_name){
+        List<Recipe> recipelist = recipeRepository.getRecipeSearchWriterByBlog(writer_name);
+        List<RecipeWriterDto> recipeWriterDtoList = new ArrayList<>();
+
+        for(Recipe recipe: recipelist){
+            RecipeWriterDto recipeWriterDto = new RecipeWriterDto(recipe);
+
+            recipeWriterDtoList.add(recipeWriterDto);
+        }
+
+        RecipeWriter recipeWriter = recipeRepository.findWriter(writer_name);
+
+        RecipeWriterResponse recipeWriterResponse = new RecipeWriterResponse();
+        recipeWriterResponse.setRecipeWriterDto(recipeWriterDtoList);
+        recipeWriterResponse.setRecipeWriter(recipeWriter);
+
+        return recipeWriterResponse;
+    }
+
+    @GetMapping("/recipe/youtube_writer/{writer_name}")
+    public RecipeWriterResponse findByYoutubeWriter(@PathVariable String writer_name){
+        List<Recipe> recipelist = recipeRepository.getRecipeSearchWriterByYoutube(writer_name);
         List<RecipeWriterDto> recipeWriterDtoList = new ArrayList<>();
 
         for(Recipe recipe: recipelist){

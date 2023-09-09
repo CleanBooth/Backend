@@ -66,6 +66,8 @@ insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, rec
 values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVtzHmKfphZSj_aq6P3o2AlBm3tzJuwV32Cd0mVTU&s');
 insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
 values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt8temYrqxpvPW5Yz3zxNAc6aHoFvZ0gCqriTh7Vyvg&s');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (4, 'Noodle.com', '잔치국수', 2, True, '한식, 다이어트', 'noodle1', 1,'https://recipe1.ezmember.co.kr/cache/recipe/2015/10/14/434379c503e37e6964324965a79d3a101.jpg');
 
 select * from recipe;
 
@@ -101,7 +103,21 @@ values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
 
-select * from notice;]]></console>
+select * from notice;
+
+delete from recipe;
+select * from recipe;
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'https://t3.ftcdn.net/jpg/04/66/99/64/360_F_466996463_1SclmmBcD4BmsFCH3odIQxUT7l7Y6E0K.jpg');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVtzHmKfphZSj_aq6P3o2AlBm3tzJuwV32Cd0mVTU&s');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt8temYrqxpvPW5Yz3zxNAc6aHoFvZ0gCqriTh7Vyvg&s');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (4, 'Noodle.com', '잔치국수', 2, True, '한식, 다이어트', 'noodle1', 1,'https://recipe1.ezmember.co.kr/cache/recipe/2015/10/14/434379c503e37e6964324965a79d3a101.jpg');
+insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
+values (5, 'Hamburger.com', '햄버거', 2, True, '양식', 'hamburger1', 2,'https://thumb.mt.co.kr/06/2021/03/2021030517294890953_1.jpg/dims/optimize/');
+select * from recipe;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
