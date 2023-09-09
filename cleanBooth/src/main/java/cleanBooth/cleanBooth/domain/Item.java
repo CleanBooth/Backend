@@ -61,14 +61,14 @@ public class Item {
     }
 
 
-    public Float getAvgRating(){
+    public Double getAvgRating(){
         List<Double> scores = reviews.stream().map(Review::getScore).collect(Collectors.toList());
-        float totalScore = 0;
+        Double totalScore = (double) 0;
         for (Double score: scores){
             totalScore += score;
         }
         if (reviewCount == 0){
-            return (float) 0;
+            return (double) 0;
         }
         else return totalScore/reviewCount;
     }
@@ -78,7 +78,7 @@ public class Item {
     }
 
     public void updateReviewCount(){
-        this.reviewCount = reviews.stream().count();
+        this.reviewCount++;
     }
 
 /*    // public 생성자 임시로 생성

@@ -3,6 +3,7 @@ package cleanBooth.cleanBooth.domain;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
@@ -28,6 +29,7 @@ public class Review {
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
+    @CreatedDate
     private Date uploadDate;
 
     @OneToMany(mappedBy = "review")

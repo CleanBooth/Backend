@@ -15,7 +15,7 @@ public class ItemDto {
     private String name;
     private String brandName;
     private String image;
-    private Float rating;
+    private Double rating;
     private Long reviewCount;
     private Boolean isLiked;
 
