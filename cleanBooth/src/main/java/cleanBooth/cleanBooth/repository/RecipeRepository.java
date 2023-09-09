@@ -83,16 +83,6 @@ public class RecipeRepository {
         return writerList;
     }
 
-    public List<Recipe> getRecipeByWriter(String writer_name){
-        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name";
-        TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
-        query.setParameter("writer_name", writer_name);
-
-        List<Recipe> recipeList = query.getResultList();
-
-        return recipeList;
-    }
-
     //writer 검색
     public List<Recipe> getRecipeSearchWriterByYoutube(String writer_name){
         String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name and r.site = 'Youtube'";
