@@ -45,7 +45,7 @@ public class ItemDetailDto {
 
     public void saveIsLiked(Optional<WishItem> wishItem){
         if (wishItem.isEmpty()){
-            this.isLiked = null;
+            this.isLiked = false;
         }
         else {this.isLiked = true;}
     }

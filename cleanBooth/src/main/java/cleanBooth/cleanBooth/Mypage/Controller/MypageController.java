@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Mypage;
+package cleanBooth.cleanBooth.Mypage.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
