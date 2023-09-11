@@ -1,10 +1,7 @@
 package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.Recipe.Dto.RecipeWriterDto;
-import cleanBooth.cleanBooth.domain.Notice;
-import cleanBooth.cleanBooth.domain.Recipe;
-import cleanBooth.cleanBooth.domain.RecipeWriter;
-import cleanBooth.cleanBooth.domain.Site;
+import cleanBooth.cleanBooth.domain.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;

@@ -3,6 +3,8 @@ package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.domain.Category;
 import cleanBooth.cleanBooth.domain.Item;
+import cleanBooth.cleanBooth.domain.Review;
+import cleanBooth.cleanBooth.domain.WishItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
