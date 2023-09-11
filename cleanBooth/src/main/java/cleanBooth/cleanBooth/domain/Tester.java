@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.tester;
+package cleanBooth.cleanBooth.domain;
 
 import cleanBooth.cleanBooth.domain.Item;
 import com.fasterxml.jackson.annotation.JsonFormat;

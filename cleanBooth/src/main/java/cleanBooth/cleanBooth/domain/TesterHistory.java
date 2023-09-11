@@ -1,11 +1,8 @@
-package cleanBooth.cleanBooth.tester;
+package cleanBooth.cleanBooth.domain;
 
-import cleanBooth.cleanBooth.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Optional;
 
 @Entity
 @Getter @Setter

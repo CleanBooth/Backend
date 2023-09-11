@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.tester.dto;
+package cleanBooth.cleanBooth.Tester.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

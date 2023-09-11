@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.tester.dto;
+package cleanBooth.cleanBooth.Tester.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TesterDetailRequest {
+public class TesterDetailRequestDto {
     private boolean isTesting;
     private String itemName;
     private String itemImage;

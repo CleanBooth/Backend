@@ -1,12 +1,14 @@
-package cleanBooth.cleanBooth.tester;
+package cleanBooth.cleanBooth.Tester.Controller;
 
 import cleanBooth.cleanBooth.repository.ReviewRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
-import cleanBooth.cleanBooth.tester.dto.TesterApplyGetDto;
-import cleanBooth.cleanBooth.tester.dto.TesterApplyPostDto;
-import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
-import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
-import cleanBooth.cleanBooth.tester.service.TesterService;
+import cleanBooth.cleanBooth.repository.TesterHistoryRepository;
+import cleanBooth.cleanBooth.repository.TesterRepository;
+import cleanBooth.cleanBooth.Tester.Dto.TesterApplyGetDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterApplyPostDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterDetailRequestDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterListRequestDto;
+import cleanBooth.cleanBooth.Tester.Service.TesterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -33,13 +35,13 @@ public class TesterController {
 
     /* 클린체험단 리스트 GET */
     @GetMapping
-    public List<TesterListRequest> getAllTestersDTO() {
+    public List<TesterListRequestDto> getAllTestersDTO() {
         return testerService.getAllTestersDTO();
     }
 
     /* 체험단 1개 상세페이지 GET*/
     @GetMapping("/{tester_id}")
-    public TesterDetailRequest tester(@PathVariable Long tester_id) throws ChangeSetPersister.NotFoundException {
+    public TesterDetailRequestDto tester(@PathVariable Long tester_id) throws ChangeSetPersister.NotFoundException {
         return testerService.getTesterDetailById(tester_id);
     }
 
@@ -55,7 +57,6 @@ public class TesterController {
         return ResponseEntity.ok(testerApplyGetDto);
     }
 
-    // 수정중
     //* 체험단 신청 POST *//
     @PostMapping("/apply/{tester_id}")
     public void postTesterApply(@PathVariable("tester_id") Long testerId, @RequestBody TesterApplyPostDto applyDto) {
