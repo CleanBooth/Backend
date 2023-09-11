@@ -32,5 +32,4 @@ public class Recipe {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private RecipeWriter recipeWriter;
-
 }
