@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="update: '/recipe/writer/{writer_name}' -&gt; '/recipe/blog_writer/{writer_name}', '/recipe/youtube_writer/{writer_name}'">
+    <list default="true" id="754900f3-5586-4184-9275-800d555c8a19" name="Changes" comment="mypage controller, wishRecipe 관 파일">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/RecipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/WishItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/WishItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Mypage/MypageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/Mypage/MypageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleanBooth/src/main/java/cleanBooth/cleanBooth/repository/WishRecipeRepository.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +49,8 @@
       <list>
         <option value="Enum" />
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -385,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694193480689</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="mypage controller, wishRecipe 관련 파일">
+      <created>1694269138784</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1694269138784</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,7 +439,8 @@
     <MESSAGE value="update: '/recipes' 이미지 string 추가, 더미데이터 추가" />
     <MESSAGE value="update: 더미데이터 오류 해결 및 변경" />
     <MESSAGE value="update: '/recipe/writer/{writer_name}' -&gt; '/recipe/blog_writer/{writer_name}', '/recipe/youtube_writer/{writer_name}'" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: '/recipe/writer/{writer_name}' -&gt; '/recipe/blog_writer/{writer_name}', '/recipe/youtube_writer/{writer_name}'" />
+    <MESSAGE value="mypage controller, wishRecipe 관련 파일" />
+    <option name="LAST_COMMIT_MESSAGE" value="mypage controller, wishRecipe 관련 파일" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
