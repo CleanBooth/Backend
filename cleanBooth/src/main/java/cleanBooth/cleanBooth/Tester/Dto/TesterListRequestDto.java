@@ -1,11 +1,8 @@
-package cleanBooth.cleanBooth.tester.dto;
-
-import cleanBooth.cleanBooth.tester.Tester;
+package cleanBooth.cleanBooth.Tester.Dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-public class TesterListRequest {
+public class TesterListRequestDto {
     private String itemName;
     private String itemImage;
     private LocalDate endDate;

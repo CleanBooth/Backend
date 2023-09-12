@@ -1,17 +1,17 @@
-package cleanBooth.cleanBooth.tester.service;
+package cleanBooth.cleanBooth.Tester.Service;
 
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.User;
 import cleanBooth.cleanBooth.repository.ItemRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
-import cleanBooth.cleanBooth.tester.Tester;
-import cleanBooth.cleanBooth.tester.TesterHistory;
-import cleanBooth.cleanBooth.tester.TesterHistoryRepository;
-import cleanBooth.cleanBooth.tester.TesterRepository;
-import cleanBooth.cleanBooth.tester.dto.TesterApplyGetDto;
-import cleanBooth.cleanBooth.tester.dto.TesterApplyPostDto;
-import cleanBooth.cleanBooth.tester.dto.TesterDetailRequest;
-import cleanBooth.cleanBooth.tester.dto.TesterListRequest;
+import cleanBooth.cleanBooth.domain.Tester;
+import cleanBooth.cleanBooth.domain.TesterHistory;
+import cleanBooth.cleanBooth.repository.TesterHistoryRepository;
+import cleanBooth.cleanBooth.repository.TesterRepository;
+import cleanBooth.cleanBooth.Tester.Dto.TesterApplyGetDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterApplyPostDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterDetailRequestDto;
+import cleanBooth.cleanBooth.Tester.Dto.TesterListRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TesterService {
@@ -35,39 +34,39 @@ public class TesterService {
     private UserRepository userRepository;
 
     /* 1. 체험단 리스트 가져오기 */
-    public List<TesterListRequest> getAllTestersDTO() {
+    public List<TesterListRequestDto> getAllTestersDTO() {
         List<Tester> allTesters = testerRepository.findAll();
-        List<TesterListRequest> testerListRequests = new ArrayList<>();
+        List<TesterListRequestDto> testerListRequestDtos = new ArrayList<>();
 
         for (Tester tester : allTesters) {
             Item item = tester.getItem(); // Assuming there is a reference to the associated item in Tester entity
 
-            TesterListRequest testerListRequest = new TesterListRequest();
-            testerListRequest.setItemName(item.getName());
-            testerListRequest.setItemImage(item.getImage());
-            testerListRequest.setEndDate(tester.getEndDate());
-            testerListRequest.setIsTesting(tester.isTesting());
+            TesterListRequestDto testerListRequestDto = new TesterListRequestDto();
+            testerListRequestDto.setItemName(item.getName());
+            testerListRequestDto.setItemImage(item.getImage());
+            testerListRequestDto.setEndDate(tester.getEndDate());
+            testerListRequestDto.setIsTesting(tester.isTesting());
             // startDate, endDate 등의 필드 설정
 
-            testerListRequests.add(testerListRequest);
+            testerListRequestDtos.add(testerListRequestDto);
         }
 
-        return testerListRequests;
+        return testerListRequestDtos;
     }
 
     /* 2. id에 따라 체험단 자세히보기 */
-    public TesterDetailRequest getTesterDetailById(Long id) throws ChangeSetPersister.NotFoundException {
+    public TesterDetailRequestDto getTesterDetailById(Long id) throws ChangeSetPersister.NotFoundException {
         Tester tester = testerRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
         // Convert Tester to TesterDetailRequest using the conversion method you have implemented
-        TesterDetailRequest request = convertToRequest(tester);
+        TesterDetailRequestDto request = convertToRequest(tester);
 
         return request;
     }
 
     // This method converts Tester to TesterDetailRequest
-    private TesterDetailRequest convertToRequest(Tester tester) {
-        TesterDetailRequest request = new TesterDetailRequest();
+    private TesterDetailRequestDto convertToRequest(Tester tester) {
+        TesterDetailRequestDto request = new TesterDetailRequestDto();
         request.setIsTesting(tester.isTesting());
         request.setItemName(tester.getItem().getName());
         request.setItemImage(tester.getItem().getImage());
