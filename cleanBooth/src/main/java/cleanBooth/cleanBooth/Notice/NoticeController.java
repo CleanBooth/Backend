@@ -76,6 +76,24 @@ public class NoticeController {
         return noticeMainResponse;
     }
 
+    @GetMapping("/notice/content/{content}")
+    public NoticeMainResponse noticeSearchContent(@PathVariable String content){
+        List<Notice> noticeList = noticeRepository.contentSearch(content);
+        List<NoticeMainDto> noticeMainDtos = new ArrayList<>();
+        int totalCount = noticeList.size();
+
+        for(Notice notice: noticeList){
+            NoticeMainDto noticeMainDto = new NoticeMainDto(notice);
+            noticeMainDtos.add(noticeMainDto);
+        }
+
+        NoticeMainResponse noticeMainResponse = new NoticeMainResponse();
+        noticeMainResponse.setTotalCount(totalCount);
+        noticeMainResponse.setNoticeMainDtoList(noticeMainDtos);
+
+        return noticeMainResponse;
+    }
+
     public void incrementViewNum(Long noticeId){
         Notice notice = noticeRepository.getById(noticeId);
         if (notice != null){
