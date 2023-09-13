@@ -57,6 +57,7 @@ public class TesterController {
         return ResponseEntity.ok(testerApplyGetDto);
     }
 
+
     //* 체험단 신청 POST *//
     @PostMapping("/apply/{tester_id}")
     public void postTesterApply(@PathVariable("tester_id") Long testerId, @RequestBody TesterApplyPostDto applyDto) {
