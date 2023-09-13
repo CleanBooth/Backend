@@ -45,6 +45,16 @@ public class NoticeRepository {
         return noticeList;
     }
 
+    public List<Notice> contentSearch(String content){
+        String hql = "select n from Notice n where n.noticeContent like :noticeContent";
+        TypedQuery<Notice> query = entityManager.createQuery(hql, Notice.class);
+        query.setParameter("noticeContent", "%"+content+"%");
+
+        List<Notice> noticeList = query.getResultList();
+
+        return noticeList;
+    }
+
     public Notice getById(Long id){
         return entityManager.find(Notice.class, id);
     }

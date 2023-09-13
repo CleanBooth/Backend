@@ -25,7 +25,7 @@ public class ItemReviewDto {
 
     public ItemReviewDto(Review review){
         this.userName = review.getUser().getName();
-        this.userGeneration = review.getUser().getBirthday();  // 연령대 추가되면 변경해야 함
+        this.userGeneration = review.getUser().getAge();
         this.goodDescription = review.getGoodDescription();
         this.badDescription = review.getBadDescription();
         this.score = review.getScore();
