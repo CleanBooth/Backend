@@ -23,6 +23,7 @@ public class MypageService {
     private final AuthTokensGenerator authTokensGenerator;
     private final WishRecipeRepository wishRecipeRepository;
     private final ReviewRepository reviewRepository;
+    private final TesterHistoryRepository testerHistoryRepository;
 
     // 찜한 상품 페이지
     public MyItemListDto findMyItemList(String accessToken){
@@ -84,5 +85,41 @@ public class MypageService {
         List<MyReviewPageDto> myReviews = reviews.stream().map(review -> new MyReviewPageDto(review)).toList();
 
         return myReviews;
+    }
+
+    public List<MyTesterDto> findMyTesterPage(String accessToken) {
+
+        if (accessToken == null) { //유저가 로그인 되어있지 않다면
+            throw new IllegalStateException();
+        }
+        Long memberId = authTokensGenerator.extractMemberId(accessToken);
+
+        Optional<User> optionalUser = userRepository.findById(memberId);
+
+        if (optionalUser.isEmpty()) { //유저가 유효하지 않으면 에러 리턴
+            throw new IllegalStateException();
+        }
+
+        List<TesterHistory> testerHistories = testerHistoryRepository.findAllByUser(optionalUser.get());
+
+        // MyTesterDto 리스트 생성
+        List<MyTesterDto> myTesterDtos = new ArrayList<>();
+
+        for (TesterHistory history : testerHistories) {
+            MyTesterDto myTesterDto = new MyTesterDto();
+            Tester tester = history.getTester();
+            Item item = tester.getItem();
+
+            myTesterDto.setTesterId(tester.getId());
+            myTesterDto.setIsWin(history.isWin());
+            myTesterDto.setItemName(item.getName());
+            myTesterDto.setItemImage(item.getImage());
+            myTesterDto.setEndDate(tester.getEndDate());
+            myTesterDto.setIsTesting(tester.isTesting());
+            myTesterDto.setIsReviewed(history.isReviewed());
+
+            myTesterDtos.add(myTesterDto);
+        }
+        return myTesterDtos;
     }
 }

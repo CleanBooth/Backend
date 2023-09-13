@@ -2,16 +2,16 @@ package cleanBooth.cleanBooth.Tester.Service;
 
 import cleanBooth.cleanBooth.domain.Item;
 import cleanBooth.cleanBooth.domain.User;
-import cleanBooth.cleanBooth.repository.ItemRepository;
 import cleanBooth.cleanBooth.repository.UserRepository;
 import cleanBooth.cleanBooth.domain.Tester;
 import cleanBooth.cleanBooth.domain.TesterHistory;
 import cleanBooth.cleanBooth.repository.TesterHistoryRepository;
 import cleanBooth.cleanBooth.repository.TesterRepository;
-import cleanBooth.cleanBooth.Tester.Dto.TesterApplyGetDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterApplyPostDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterDetailRequestDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterListRequestDto;
+import cleanBooth.cleanBooth.Tester.TesterApplyGetDto;
+import cleanBooth.cleanBooth.Tester.TesterApplyPostDto;
+import cleanBooth.cleanBooth.Tester.TesterDetailRequestDto;
+import cleanBooth.cleanBooth.Tester.TesterListRequestDto;
+import cleanBooth.cleanBooth.service.AuthTokensGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TesterService {
@@ -27,8 +28,9 @@ public class TesterService {
 
     @Autowired
     private TesterHistoryRepository testerHistoryRepository;
+
     @Autowired
-    private ItemRepository itemRepository;
+    private AuthTokensGenerator authTokensGenerator;
 
     @Autowired
     private UserRepository userRepository;
@@ -77,7 +79,11 @@ public class TesterService {
     }
 
     /* 3. 체험단 신청페이지 GET*/
-    public TesterApplyGetDto getTesterApplyGetById(Long testerId) {
+    public TesterApplyGetDto getTesterApplyGetById(Long testerId, String accessToken) {
+        if (accessToken == null){ //유저가 로그인 되어있지 않다면
+            throw new IllegalStateException();
+        }
+
         Tester tester = testerRepository.findById(testerId).orElse(null);
 
         if (tester == null) {
@@ -97,18 +103,29 @@ public class TesterService {
 
     /* 4. 체험단 신청 제출 POST */
     @Transactional
-    public void postApplyTester(TesterApplyPostDto applyDto) {
-        // phoneNum을 사용하여 User를 찾기
-        User user = userRepository.findByMobile(applyDto.getPhoneNum());
+    public void postApplyTester(TesterApplyPostDto applyDto, String accessToken) {
+        if (accessToken == null) { //유저가 로그인 되어있지 않다면
+            throw new IllegalStateException();
+        }
+        Long memberId = authTokensGenerator.extractMemberId(accessToken);
 
-        if (user != null) {
-            // Tester 엔티티를 가져와서 처리
-            Tester tester = testerRepository.findById(applyDto.getTesterId()).orElse(null);
+        Optional<User> optionalUser = userRepository.findById(memberId);
 
-            if (tester != null) {
+        if (optionalUser.isEmpty()) { //유저가 유효하지 않으면 에러 리턴
+            throw new IllegalStateException();
+        }
+
+        // Tester 엔티티를 가져온다.
+        Tester tester = testerRepository.findById(applyDto.getTesterId()).orElse(null);
+
+        if (tester != null) {
+            // 사용자가 이미 해당 테스터에 대한 신청을 했는지 확인
+            boolean hasApplied = testerHistoryRepository.existsByUserAndTester(optionalUser.get(), tester);
+
+            if (!hasApplied) {
                 // TesterHistory 엔티티를 생성하고 User 정보를 설정한다.
                 TesterHistory testerHistory = new TesterHistory();
-                testerHistory.setUser(user);
+                testerHistory.setUser(optionalUser.get()); // 로그인한 사용자 정보 사용
                 testerHistory.setTester(tester);
                 testerHistory.setName(applyDto.getName());
                 testerHistory.setAddress(applyDto.getAddress());
@@ -118,12 +135,12 @@ public class TesterService {
                 // TesterHistory를 저장합니다.
                 testerHistoryRepository.save(testerHistory);
             } else {
-                // testerId에 해당하는 Tester가 없는 경우 예외 처리
-                throw new RuntimeException("Tester not found");
+                // 이미 신청한 경우 예외 처리
+                throw new RuntimeException("이미 해당 테스터를 신청했습니다.");
             }
         } else {
-            // 해당 phoneNum에 해당하는 User가 없는 경우 예외 처리
-            throw new RuntimeException("User not found");
+            // testerId에 해당하는 Tester가 없는 경우 예외 처리
+            throw new RuntimeException("Tester not found");
         }
     }
 }

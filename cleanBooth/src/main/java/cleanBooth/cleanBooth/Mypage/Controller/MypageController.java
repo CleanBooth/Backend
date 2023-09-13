@@ -3,6 +3,7 @@ package cleanBooth.cleanBooth.Mypage.Controller;
 import cleanBooth.cleanBooth.Mypage.Dto.MyItemListDto;
 import cleanBooth.cleanBooth.Mypage.Dto.MyRecipeListDto;
 import cleanBooth.cleanBooth.Mypage.Dto.MyReviewPageDto;
+import cleanBooth.cleanBooth.Mypage.Dto.MyTesterDto;
 import cleanBooth.cleanBooth.Mypage.Service.MypageService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -55,5 +56,9 @@ public class MypageController {
         return mypageService.findMyReviewPage(accessToken);
     }
 
-
+    @GetMapping("/tester-history/")
+    public List<MyTesterDto> myTesterPage(){
+        String accessToken = extractToken();
+        return mypageService.findMyTesterPage(accessToken);
+    }
 }
