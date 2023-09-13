@@ -77,7 +77,11 @@ public class TesterService {
     }
 
     /* 3. 체험단 신청페이지 GET*/
-    public TesterApplyGetDto getTesterApplyGetById(Long testerId) {
+    public TesterApplyGetDto getTesterApplyGetById(Long testerId, String accessToken) {
+        if (accessToken == null){ //유저가 로그인 되어있지 않다면
+            throw new IllegalStateException();
+        }
+
         Tester tester = testerRepository.findById(testerId).orElse(null);
 
         if (tester == null) {
