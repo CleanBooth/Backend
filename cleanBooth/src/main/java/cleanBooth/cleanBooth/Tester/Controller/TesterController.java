@@ -1,9 +1,9 @@
 package cleanBooth.cleanBooth.Tester.Controller;
 
-import cleanBooth.cleanBooth.Tester.Dto.TesterApplyGetDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterApplyPostDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterDetailRequestDto;
-import cleanBooth.cleanBooth.Tester.Dto.TesterListRequestDto;
+import cleanBooth.cleanBooth.Tester.TesterApplyGetDto;
+import cleanBooth.cleanBooth.Tester.TesterApplyPostDto;
+import cleanBooth.cleanBooth.Tester.TesterDetailRequestDto;
+import cleanBooth.cleanBooth.Tester.TesterListRequestDto;
 import cleanBooth.cleanBooth.repository.TesterHistoryRepository;
 import cleanBooth.cleanBooth.repository.TesterRepository;
 
@@ -14,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Transactional
 @RestController
 @RequestMapping("/tester")
 @RequiredArgsConstructor
@@ -70,7 +72,8 @@ public class TesterController {
     //* 체험단 신청 POST *//
     @PostMapping("/apply/{tester_id}")
     public void postTesterApply(@PathVariable("tester_id") Long testerId, @RequestBody TesterApplyPostDto applyDto) {
+        String accessToken = extractToken();
         applyDto.setTesterId(testerId); // URL에서 추출한 tester_id 값을 DTO에 설정
-        testerService.postApplyTester(applyDto); // testerService의 postApplyTester 메서드 호출
+        testerService.postApplyTester(applyDto, accessToken); // testerService의 postApplyTester 메서드 호출
     }
 }

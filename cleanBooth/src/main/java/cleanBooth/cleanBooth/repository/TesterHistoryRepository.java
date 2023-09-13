@@ -1,5 +1,6 @@
 package cleanBooth.cleanBooth.repository;
 
+import cleanBooth.cleanBooth.domain.Tester;
 import cleanBooth.cleanBooth.domain.TesterHistory;
 import cleanBooth.cleanBooth.domain.User;
 import cleanBooth.cleanBooth.domain.WishItem;
@@ -10,4 +11,6 @@ import java.util.Optional;
 
 public interface TesterHistoryRepository extends JpaRepository<TesterHistory, Long> {
     List<TesterHistory> findAllByUser(User user);
+
+    boolean existsByUserAndTester(User user, Tester tester);
 }

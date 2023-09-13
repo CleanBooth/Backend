@@ -1,4 +1,4 @@
-package cleanBooth.cleanBooth.Tester.Dto;
+package cleanBooth.cleanBooth.Tester;
 
 import java.time.LocalDate;
 
