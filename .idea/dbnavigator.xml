@@ -31,9 +31,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4942f992-cb9b-422f-b94a-f157abb52cb4">
-      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[select * from recipe_writer;
-insert into recipe_writer(writer_id, name, link) values (1, '요리사1', 'link1.com');
-insert into recipe_writer(writer_id, name, link) values (2, '나야나요리사', 'link2.com');
+      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[delete from recipe_writer;
+select * from recipe_writer;
 
 select * from recipe_writer;
 
@@ -50,26 +49,6 @@ insert into recipe_category(recipe_category_id, name) values (8, '소스/잼/양
 select * from recipe_category;
 
 select * from recipe;
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
-values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1);
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
-values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2);
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id)
-values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1);
-
-
-delete from recipe;
-select * from recipe;
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'https://t3.ftcdn.net/jpg/04/66/99/64/360_F_466996463_1SclmmBcD4BmsFCH3odIQxUT7l7Y6E0K.jpg');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVtzHmKfphZSj_aq6P3o2AlBm3tzJuwV32Cd0mVTU&s');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt8temYrqxpvPW5Yz3zxNAc6aHoFvZ0gCqriTh7Vyvg&s');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (4, 'Noodle.com', '잔치국수', 2, True, '한식, 다이어트', 'noodle1', 1,'https://recipe1.ezmember.co.kr/cache/recipe/2015/10/14/434379c503e37e6964324965a79d3a101.jpg');
-
-select * from recipe;
 
 select * from notice;
 
@@ -82,13 +61,8 @@ values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
 
-select * from notice;
-
-select * from recipe;
-
-delete from notice;
-
-select * from notice;
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (4, '2023.08.27', '내용을 검색하기 위한 데이터입니다!', '제목3', '누리최', 1);
 
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (0, '2023.08.27', '내용0', '제목0', '누리최', 1);
@@ -102,22 +76,72 @@ values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
 
 insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
 values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (5, '2023.08.27', '내용3', '제목4', '누리', 1);
+insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
+values (6, '2023.08.27', '내용3', '제목5', '리', 1);
 
-select * from notice;
+select * from recipe_writer;
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(1, 'https://www.youtube.com/@whoyouare_________', '후유아','아름다움과 자신감을 되찾을 수 있도록');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(2, 'https://www.youtube.com/@eatsbetter6042', '잇츠베러(Eats Better)','');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(3, 'https://www.youtube.com/@Vegeis/about', '베지이즈 Vege is','한 줌의 흙과 충분한 일조량, 적당한 물만 있다면 우리 손으로 건강한 음식을...');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(4, 'https://www.youtube.com/@MoonyKitchen', '무니키친MoonyKitchen','건강한 집밥 레시피를 공유합니다.');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(5, 'https://www.youtube.com/@user-mm6rf8es8t', '요리하는 유리','즐겁고 건강하게 채식.');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(6, 'https://www.youtube.com/@Du_man_', '두맨','리뷰만 하는데 너무 추함.');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(7, 'https://www.youtube.com/@tastyveganlife', '초식마녀','쉽고 재밌고 맛있어! 채식생활');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(8, 'https://www.youtube.com/@10recipes7', '열개의 레시피','한 가지 주재료로 열 개의 다양한 레시피를 소개합니다.');
+insert into recipe_writer(writer_id, link, name, writer_intro)
+values(9, 'https://www.youtube.com/@veggie_bear', '베지곰 Veggie bear','간단하고 맛있는 비건 집밥 요리');
+
+select * from recipe_writer;
 
 delete from recipe;
 select * from recipe;
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (1, 'Kimchi1.com', '김치', 1, True, '한식, 간편식', 'kimchi1', 1, 'https://t3.ftcdn.net/jpg/04/66/99/64/360_F_466996463_1SclmmBcD4BmsFCH3odIQxUT7l7Y6E0K.jpg');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (2, 'Spaghetti.com', '스파게티', 2, True, '양식, 소스', 'Spaghetti1', 2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVtzHmKfphZSj_aq6P3o2AlBm3tzJuwV32Cd0mVTU&s');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (3, 'AppleJam.com', '사과잼', 1, True, '소스/잼/양념, 베이킹', 'kimchi1', 1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt8temYrqxpvPW5Yz3zxNAc6aHoFvZ0gCqriTh7Vyvg&s');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (4, 'Noodle.com', '잔치국수', 2, True, '한식, 다이어트', 'noodle1', 1,'https://recipe1.ezmember.co.kr/cache/recipe/2015/10/14/434379c503e37e6964324965a79d3a101.jpg');
-insert into recipe(recipe_id, link, name, site, is_like,styles, video_title, recipe_writer_writer_id, image)
-values (5, 'Hamburger.com', '햄버거', 2, True, '양식', 'hamburger1', 2,'https://thumb.mt.co.kr/06/2021/03/2021030517294890953_1.jpg/dims/optimize/');
-select * from recipe;]]></console>
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(1, 0, 1, 'https://img.youtube.com/vi/UU12rSuJ1Mc/0.jpg', 'Youtube', '양식', '다이어트중인데 꾸덕한 맥앤치즈를 먹고 싶다면?','https://www.youtube.com/watch?v=UU12rSuJ1Mc');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(2, 0, 1, 'https://img.youtube.com/vi/jkl_aAvY9eU/0.jpg','Youtube','한식', '두툼 고소한 양배추 팬케이크','https://www.youtube.com/watch?v=jkl_aAvY9eU');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(3, 0, 1, 'https://img.youtube.com/vi/nOXTM3TR98I/0.jpg','Youtube', '양식', '통알배추를 구워 만든 알배추 샐러드','https://www.youtube.com/watch?v=nOXTM3TR98I');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(4, 0, 1, 'https://img.youtube.com/vi/EikvpnxIxjw/0.jpg', 'Youtube', '양식', '맛있는 브런치, 아보카도 연어 샌드위치','https://www.youtube.com/watch?v=EikvpnxIxjw');
+select * from recipe;
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(5, 0, 1, 'https://img.youtube.com/vi/KJ8PNaLa8gU/0.jpg', 'Youtube', '양식', '다이어트때 맘껏 먹을 수 있는 크림 리조또','https://www.youtube.com/watch?v=KJ8PNaLa8gU');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(6, 0, 1, 'https://img.youtube.com/vi/6PPlnxV0Rd4/0.jpg', 'Youtube', '양식', '감자가 남았다고요? 라이스페이퍼에 감싸보세요','https://www.youtube.com/watch?v=6PPlnxV0Rd4');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(7, 0, 1, 'https://img.youtube.com/vi/af1eYBMDtL4/0.jpg', 'Youtube', '간편식, 한식', '양배추 다이어트 이렇게 드셔보세요 정말 맛있어요','https://www.youtube.com/watch?v=af1eYBMDtL4');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(8, 0, 1, 'https://img.youtube.com/vi/JL6K5HgNP8U/0.jpg', 'Youtube', '양식', '방울토마토 다이어트 그냥 섞어드세요!','https://www.youtube.com/watch?v=JL6K5HgNP8U');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(9, 0, 1, 'https://img.youtube.com/vi/b2JULHkBnrk/0.jpg', 'Youtube', '간편식, 양식', '단호박 다이어트, 진작 이렇게 먹을껄!','https://www.youtube.com/watch?v=b2JULHkBnrk');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(10, 0, 1, 'https://img.youtube.com/vi/V1NscwaP_cs/0.jpg', 'Youtube', '양식', '20분이면 완성?? 레스토랑보다 맛있는 키토식단 감바스!','https://www.youtube.com/watch?v=V1NscwaP_cs');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(11, 0, 1, 'https://img.youtube.com/vi/m0Z7z0Zf060/0.jpg', 'Youtube', '양식', '카레가 이렇게 맛있다고..? 미트볼 커리!','https://www.youtube.com/watch?v=m0Z7z0Zf060');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(12, 0, 2, 'https://img.youtube.com/vi/dAStosptb5I/0.jpg', 'Youtube', '양식', '잇츠배러 샌드위치','https://www.youtube.com/watch?v=dAStosptb5I');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(13, 0, 2, 'https://img.youtube.com/vi/VjCGNWNJdvg/0.jpg', 'Youtube', '간편식, 양식', '','https://youtube.com/shorts/VjCGNWNJdvg?feature=share');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(14, 0, 2, 'https://img.youtube.com/vi/NG4uvno6PWE/0.jpg', 'Youtube', '양식', '','https://youtube.com/shorts/NG4uvno6PWE?feature=share');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(15, 0, 2, 'https://img.youtube.com/vi/4EQlm7qkEDg/0.jpg', 'Youtube', '한식', '','https://youtube.com/shorts/4EQlm7qkEDg?feature=share');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(16, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 모둠 콩 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=18');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(17, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 두부면 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=900');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
+values(17, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 두부면 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=900');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

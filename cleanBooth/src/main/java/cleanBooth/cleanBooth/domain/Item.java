@@ -78,7 +78,7 @@ public class Item {
     }
 
     public void updateReviewCount(){
-        this.reviewCount++;
+        this.reviewCount = this.reviews.stream().count();
     }
 
 /*    // public 생성자 임시로 생성

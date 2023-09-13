@@ -2,14 +2,17 @@ package cleanBooth.cleanBooth.repository;
 
 import cleanBooth.cleanBooth.Recipe.Dto.RecipeWriterDto;
 import cleanBooth.cleanBooth.domain.*;
+import cleanBooth.cleanBooth.service.AuthTokensGenerator;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
@@ -17,6 +20,10 @@ import java.util.concurrent.atomic.AtomicLong;
 public class RecipeRepository {
 
     private final EntityManager entityManager;
+    private final WishRecipeRepository wishRecipeRepository;
+    private final AuthTokensGenerator authTokensGenerator;
+    private final UserRepository userRepository;
+
     private AtomicLong atomic = new AtomicLong();
 
     //recipe 저장
@@ -109,5 +116,32 @@ public class RecipeRepository {
         RecipeWriter recipeWriter = query.getSingleResult();
 
         return recipeWriter;
+    }
+
+    public int modifyWishRecipe(Long recipeId, String accessToken){
+        if(accessToken == null){
+            return HttpServletResponseWrapper.SC_NOT_FOUND;
+        }
+        Long memberId = authTokensGenerator.extractMemberId(accessToken);
+        Optional<WishRecipe> optionalWishRecipe = wishRecipeRepository.findByRecipe_IdAndUser_Id(recipeId, memberId);
+        if(optionalWishRecipe.isEmpty()){
+
+            if(optionalWishRecipe.isPresent()){
+                Recipe recipe = optionalWishRecipe.get().getRecipe();
+                User user = userRepository.findById(memberId).get();
+                WishRecipe wishRecipe = new WishRecipe(recipe, user);
+                wishRecipeRepository.save(wishRecipe);
+                return HttpServletResponseWrapper.SC_CREATED;
+            }
+            else{
+                return HttpServletResponseWrapper.SC_NOT_FOUND;
+            }
+        }
+        else{
+            WishRecipe wishRecipe = optionalWishRecipe.get();
+            wishRecipeRepository.delete(wishRecipe);
+            return HttpServletResponseWrapper.SC_ACCEPTED;
+        }
+
     }
 }

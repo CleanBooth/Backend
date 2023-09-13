@@ -11,7 +11,9 @@ import cleanBooth.cleanBooth.domain.Recipe;
 import cleanBooth.cleanBooth.domain.RecipeWriter;
 import cleanBooth.cleanBooth.domain.Site;
 import cleanBooth.cleanBooth.repository.RecipeRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,20 @@ public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private HttpServletRequest request;
+
+    public String extractToken() {
+        String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            String accessToken = authorizationHeader.substring(7); // "Bearer " 이후의 문자열 추출
+            return accessToken;
+        }
+
+        return null;
+    }
 
     @GetMapping("/recipe")
     public ResponseEntity<Map<String, List<String>>> getWriters() {
@@ -119,5 +135,11 @@ public class RecipeController {
         recipeWriterResponse.setRecipeWriter(recipeWriter);
 
         return recipeWriterResponse;
+    }
+
+    @PutMapping("/recipe/wish/{recipeId}")
+    public int saveWishRecipe(@PathVariable Long recipeId){
+        String accessToken = extractToken();
+        return recipeRepository.modifyWishRecipe(recipeId, accessToken);
     }
 }
