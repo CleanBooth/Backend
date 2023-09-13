@@ -31,117 +31,60 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4942f992-cb9b-422f-b94a-f157abb52cb4">
-      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[delete from recipe_writer;
-select * from recipe_writer;
+      <console name="clean_db" type="STANDARD" schema="cleanTest_DB" session="Main"><![CDATA[select * from recipe_category
+select * from recipe
+select * from recipe_writer
 
-select * from recipe_writer;
-
-select * from recipe_category;
-insert into recipe_category(recipe_category_id, name) values (1, '한식');
-insert into recipe_category(recipe_category_id, name) values (2, '중식');
-insert into recipe_category(recipe_category_id, name) values (3, '양식');
-insert into recipe_category(recipe_category_id, name) values (4, '간편식');
-insert into recipe_category(recipe_category_id, name) values (5, '다이어트');
-insert into recipe_category(recipe_category_id, name) values (6, '간식');
-insert into recipe_category(recipe_category_id, name) values (7, '베이킹');
-insert into recipe_category(recipe_category_id, name) values (8, '소스/잼/양념');
-
-select * from recipe_category;
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(67, 0, 8, 'Youtube', '간식', 'https://youtu.be/AuFs9wuQ6x4?t=5','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 두부 인절미');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(68, 0, 8, 'Youtube', '한식', 'https://youtu.be/AuFs9wuQ6x4?t=77','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 버섯 배추찜');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(69, 0, 8, 'Youtube', '한식', 'https://youtu.be/AuFs9wuQ6x4?t=155','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 매콤 두부 덮밥');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(70, 0, 8, 'Youtube', '간편식, 양식', 'https://youtu.be/AuFs9wuQ6x4?t=309','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 템페 사과 샌드위치');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(71, 0, 8, 'Youtube', '한식', 'https://youtu.be/AuFs9wuQ6x4?t=428','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 비건 치즈 김치 볶음밥');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(72, 0, 8, 'Youtube', '한식', 'https://youtu.be/AuFs9wuQ6x4?t=520','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 우엉 튀김 조림');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(73, 0, 8, 'Youtube', '양식', 'https://youtu.be/AuFs9wuQ6x4?t=6288','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 시금치 토마토 파스타');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(74, 0, 8, 'Youtube', '한식', 'https://youtu.be/AuFs9wuQ6x4?t=854','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 우엉 냉이전');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(75, 0, 8, 'Youtube', '간편식', 'https://youtu.be/AuFs9wuQ6x4?t=965','https://img.youtube.com/vi/AuFs9wuQ6x4/0.jpg','지구를 지키는 건강을 지키는 채식 식단 열개의 레시피 - 초격차 클래식');
 
 select * from recipe;
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(76, 0, 9, 'Youtube', '간편식, 양식', 'https://youtu.be/UTFbV4c2_5g?t=18','https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg','식단 고민 필요 없는 일주일 다이어트 도시락 - 모둠 콩 샐러드 ');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(77, 0, 9, 'Youtube', '간편식, 양식', 'https://youtu.be/UTFbV4c2_5g?t=900','https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg','식단 고민 필요 없는 일주일 다이어트 도시락 - 두부면 샐러드 ');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(78, 0, 9, 'Youtube', '중식', 'https://www.youtube.com/watch?v=qxvDF9UCOlE','https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg','마파두부 만들기😊 두반장 없이도 정말 맛있어요 | 간단요리 | 비건 레시피 | Korean Vegan Recipes ');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(79, 0, 9, 'Youtube', '한식', 'www.youtube.com/watch?v=FXjGGhiRw0E','https://img.youtube.com/vi/FXjGGhiRw0E/0.jpg','채개장(채식육개장), 간단한 레시피로도 깊은 맛 낼 수 있어요 | No meat | Hot spicy vegetable soup, Vegan recipe 간단 요리');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(80, 0, 9, 'Youtube', '간식', 'https://www.youtube.com/watch?v=9VYps5emuOI','https://img.youtube.com/vi/9VYps5emuOI/0.jpg','고구마 삶지 않아도 됩니다! 초간단 고구마라떼(생고구마로 10분만에) with Soymilk | Vegan sweet potato latte 간단 요리');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(81, 0, 9, 'Youtube', '한식', 'https://www.youtube.com/watch?v=Keg6RZmNXXc','https://img.youtube.com/vi/Keg6RZmNXXc/0.jpg','표고버섯 가장 맛있게 먹는 방법! 정말 쉽고 간단한 매콤표고덮밥 rice with shiitake mushroom | Spicy Vegan recipes 비건 한식 요리');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(82, 0, 9, 'Youtube', '간식', 'https://www.youtube.com/watch?v=RO6ssHpgUfk','https://img.youtube.com/vi/RO6ssHpgUfk/0.jpg','옥수수전! 스위트콘만 있으면 바로 만들 수 있어요 No cheese Corn Pancake Vegan recipe 간단 요리, 달콤한 마요 소스, 비건 간식');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(83, 0, 9, 'Youtube', '양식', 'https://www.youtube.com/watch?v=5M_HWfRPl6ss','https://img.youtube.com/vi/5M_HWfRPl6ss/0.jpg','미니 루꼴라피자 만들기🍕🌿 노오븐 또띠아피자 | No oven arugula pizza 집에서 피자 만들기 | 비건 루꼴라플랫브레드 | Vegan recipe');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(84, 0, 9, 'Youtube', '한식', 'https://www.youtube.com/watch?v=r1gw_NDcp0M','https://img.youtube.com/vi/r1gw_NDcp0M/0.jpg','콩국수 만들기😊 병아리콩으로 만들어봤어요 | Noodles in Cold Chickpea Soup 고소하고 정말 맛있습니다👍 Vegan recipe');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(85, 0, 9, 'Youtube', '간편식, 양식', 'https://www.youtube.com/watch?v=C1HmwqJHVcMM','https://img.youtube.com/vi/C1HmwqJHVcM/0.jpg','병아리콩으로 이렇게 만들어 보세요😋 계란 없이도 정말 맛있는 샌드위치 | chickpea vegan recipe');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(86, 0, 9, 'Youtube', '한식, 양식', 'https://www.youtube.com/watch?v=q8ESVJhGMv0','https://img.youtube.com/vi/q8ESVJhGMv0/0.jpg','당근 맛있게 먹는 방법! 요즘 매일 먹어요~ | Vegan recipe | feat. 당근라페, 또띠아롤, 꼬마김밥');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(87, 0, 9, 'Youtube', '한식', 'https://www.youtube.com/watch?v=wQSGH5WV8VM','https://img.youtube.com/vi/wQSGH5WV8VM/0.jpg','남은 밥과 자투리 채소 다 모여라! 속이 편한 음식이 먹고 싶을 때 | 토마토죽 만들기 | 간편 한끼 Korean Vegan recipe');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(88, 0, 9, 'Youtube', '한식', 'https://www.youtube.com/watch?v=S03570iVafg','https://img.youtube.com/vi/S03570iVafg/0.jpg','찍먹 유부김밥 만들기 | 중독성 강함 주의 | Vegan Gimbap');
+insert into recipe(recipe_id, is_like, recipe_writer_writer_id, site, styles, link, image, video_title)
+values(89, 0, 9, 'Youtube', '한식', 'https://www.youtube.com/watch?v=EtQ9jb4nLE4','https://img.youtube.com/vi/EtQ9jb4nLE4/0.jpg','비빔메밀국수 만들기 | 매콤새콤달콤 고소한 맛~ 정말 맛있습니다😋 여름 입맛 살려줄 음식이 필요할 때 | Korean Vegan recipe');
 
-select * from notice;
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (1, '2023.08.27', '내용1', '제목1', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (4, '2023.08.27', '내용을 검색하기 위한 데이터입니다!', '제목3', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (0, '2023.08.27', '내용0', '제목0', '누리최', 1);
-
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (1, '2023.08.27', '내용1', '제목1', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (2, '2023.08.27', '내용2', '제목2', '누리최', 1);
-
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (3, '2023.08.27', '내용3', '제목3', '누리최', 1);
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (5, '2023.08.27', '내용3', '제목4', '누리', 1);
-insert into notice(notice_id, create_at, notice_content, notice_title, notice_writer, view_num)
-values (6, '2023.08.27', '내용3', '제목5', '리', 1);
-
-select * from recipe_writer;
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(1, 'https://www.youtube.com/@whoyouare_________', '후유아','아름다움과 자신감을 되찾을 수 있도록');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(2, 'https://www.youtube.com/@eatsbetter6042', '잇츠베러(Eats Better)','');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(3, 'https://www.youtube.com/@Vegeis/about', '베지이즈 Vege is','한 줌의 흙과 충분한 일조량, 적당한 물만 있다면 우리 손으로 건강한 음식을...');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(4, 'https://www.youtube.com/@MoonyKitchen', '무니키친MoonyKitchen','건강한 집밥 레시피를 공유합니다.');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(5, 'https://www.youtube.com/@user-mm6rf8es8t', '요리하는 유리','즐겁고 건강하게 채식.');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(6, 'https://www.youtube.com/@Du_man_', '두맨','리뷰만 하는데 너무 추함.');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(7, 'https://www.youtube.com/@tastyveganlife', '초식마녀','쉽고 재밌고 맛있어! 채식생활');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(8, 'https://www.youtube.com/@10recipes7', '열개의 레시피','한 가지 주재료로 열 개의 다양한 레시피를 소개합니다.');
-insert into recipe_writer(writer_id, link, name, writer_intro)
-values(9, 'https://www.youtube.com/@veggie_bear', '베지곰 Veggie bear','간단하고 맛있는 비건 집밥 요리');
-
-select * from recipe_writer;
-
-delete from recipe;
-select * from recipe;
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(1, 0, 1, 'https://img.youtube.com/vi/UU12rSuJ1Mc/0.jpg', 'Youtube', '양식', '다이어트중인데 꾸덕한 맥앤치즈를 먹고 싶다면?','https://www.youtube.com/watch?v=UU12rSuJ1Mc');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(2, 0, 1, 'https://img.youtube.com/vi/jkl_aAvY9eU/0.jpg','Youtube','한식', '두툼 고소한 양배추 팬케이크','https://www.youtube.com/watch?v=jkl_aAvY9eU');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(3, 0, 1, 'https://img.youtube.com/vi/nOXTM3TR98I/0.jpg','Youtube', '양식', '통알배추를 구워 만든 알배추 샐러드','https://www.youtube.com/watch?v=nOXTM3TR98I');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(4, 0, 1, 'https://img.youtube.com/vi/EikvpnxIxjw/0.jpg', 'Youtube', '양식', '맛있는 브런치, 아보카도 연어 샌드위치','https://www.youtube.com/watch?v=EikvpnxIxjw');
-select * from recipe;
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(5, 0, 1, 'https://img.youtube.com/vi/KJ8PNaLa8gU/0.jpg', 'Youtube', '양식', '다이어트때 맘껏 먹을 수 있는 크림 리조또','https://www.youtube.com/watch?v=KJ8PNaLa8gU');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(6, 0, 1, 'https://img.youtube.com/vi/6PPlnxV0Rd4/0.jpg', 'Youtube', '양식', '감자가 남았다고요? 라이스페이퍼에 감싸보세요','https://www.youtube.com/watch?v=6PPlnxV0Rd4');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(7, 0, 1, 'https://img.youtube.com/vi/af1eYBMDtL4/0.jpg', 'Youtube', '간편식, 한식', '양배추 다이어트 이렇게 드셔보세요 정말 맛있어요','https://www.youtube.com/watch?v=af1eYBMDtL4');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(8, 0, 1, 'https://img.youtube.com/vi/JL6K5HgNP8U/0.jpg', 'Youtube', '양식', '방울토마토 다이어트 그냥 섞어드세요!','https://www.youtube.com/watch?v=JL6K5HgNP8U');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(9, 0, 1, 'https://img.youtube.com/vi/b2JULHkBnrk/0.jpg', 'Youtube', '간편식, 양식', '단호박 다이어트, 진작 이렇게 먹을껄!','https://www.youtube.com/watch?v=b2JULHkBnrk');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(10, 0, 1, 'https://img.youtube.com/vi/V1NscwaP_cs/0.jpg', 'Youtube', '양식', '20분이면 완성?? 레스토랑보다 맛있는 키토식단 감바스!','https://www.youtube.com/watch?v=V1NscwaP_cs');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(11, 0, 1, 'https://img.youtube.com/vi/m0Z7z0Zf060/0.jpg', 'Youtube', '양식', '카레가 이렇게 맛있다고..? 미트볼 커리!','https://www.youtube.com/watch?v=m0Z7z0Zf060');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(12, 0, 2, 'https://img.youtube.com/vi/dAStosptb5I/0.jpg', 'Youtube', '양식', '잇츠배러 샌드위치','https://www.youtube.com/watch?v=dAStosptb5I');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(13, 0, 2, 'https://img.youtube.com/vi/VjCGNWNJdvg/0.jpg', 'Youtube', '간편식, 양식', '','https://youtube.com/shorts/VjCGNWNJdvg?feature=share');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(14, 0, 2, 'https://img.youtube.com/vi/NG4uvno6PWE/0.jpg', 'Youtube', '양식', '','https://youtube.com/shorts/NG4uvno6PWE?feature=share');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(15, 0, 2, 'https://img.youtube.com/vi/4EQlm7qkEDg/0.jpg', 'Youtube', '한식', '','https://youtube.com/shorts/4EQlm7qkEDg?feature=share');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(16, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 모둠 콩 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=18');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(17, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 두부면 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=900');
-insert into recipe(recipe_id, is_like, recipe_writer_writer_id, image, site, styles, video_title, link)
-values(17, 0, 3, 'https://img.youtube.com/vi/UTFbV4c2_5g/0.jpg', 'Youtube', '간편식, 양식', '식단 고민 필요 없는 일주일 다이어트 도시락 - 두부면 샐러드 ','https://youtu.be/UTFbV4c2_5g?t=900');]]></console>
+select * from recipe;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
