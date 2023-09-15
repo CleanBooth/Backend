@@ -8,10 +8,10 @@ import lombok.Setter;
 public class RecipeWriterDto {
 
     private String link;
-    private String name;
+    private String video_title;
 
     public RecipeWriterDto(Recipe recipe){
         this.link = recipe.getLink();
-        this.name = recipe.getName();
+        this.video_title = recipe.getVideoTitle();
     }
 }

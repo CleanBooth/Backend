@@ -99,7 +99,7 @@ public class RecipeRepository {
     }
 
     public List<Recipe> getRecipeSearchWriterByBlog(String writer_name){
-        String hql = "select r from Recipe r where r.recipeWriter.name = :writer_name and r.site = 'Blog'";
+        String hql = "select r from Recipe r where r.recipeWriter.name= :writer_name and r.site = 'Blog'";
         TypedQuery<Recipe> query = entityManager.createQuery(hql, Recipe.class);
         query.setParameter("writer_name", writer_name);
 
