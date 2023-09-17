@@ -1,14 +1,15 @@
 package cleanBooth.cleanBooth.service;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
-import java.security.Key;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import io.jsonwebtoken.ExpiredJwtException;
+
+import java.security.Key;
 import java.util.Date;
 
 @Component
@@ -44,5 +45,12 @@ public class JwtTokenProvider {
         } catch (ExpiredJwtException e) {
             return e.getClaims();
         }
+    }
+
+    public String regenerateToken(String subject) {
+        // 토큰의 유효기간을 설정합니다. 예를 들어, 1시간 후로 설정할 수 있습니다.
+        Date expiredAt = new Date(System.currentTimeMillis() + 3600000); // 1시간 후
+
+        return generate(subject, expiredAt);
     }
 }
