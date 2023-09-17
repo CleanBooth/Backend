@@ -5,6 +5,7 @@ import cleanBooth.cleanBooth.repository.UserRepository;
 import cleanBooth.cleanBooth.service.AuthTokensGenerator;
 import cleanBooth.cleanBooth.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,20 +27,24 @@ public class UserController {
 
     @GetMapping("/{accessToken}")
     public ResponseEntity<User> findByAccessToken(@PathVariable String accessToken) {
+        if (jwtTokenProvider.isBlacklisted(accessToken)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         Long memberId = authTokensGenerator.extractMemberId(accessToken);
         Optional<User> userOptional = userRepository.findById(memberId);
 
         if (userOptional.isPresent()) {
             return ResponseEntity.ok(userOptional.get());
         } else {
-            // 값이 존재하지 않을 때 처리
             return ResponseEntity.notFound().build();
         }
     }
+
+
     @DeleteMapping("/logout/{accessToken}")
-    public ResponseEntity<String> logout(@PathVariable String accessToken) {
-        String subject = jwtTokenProvider.extractSubject(accessToken);
-        String newToken = jwtTokenProvider.regenerateToken(subject);
-        return ResponseEntity.ok(newToken); // 새로운 토큰을 반환합니다.
+    public ResponseEntity<Void> logout(@PathVariable String accessToken) {
+        jwtTokenProvider.addToBlacklist(accessToken);
+        return ResponseEntity.ok().build();
     }
 }

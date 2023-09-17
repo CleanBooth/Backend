@@ -1,5 +1,6 @@
 package cleanBooth.cleanBooth.service;
 
+import cleanBooth.cleanBooth.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -11,11 +12,14 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class JwtTokenProvider {
 
     private final Key key;
+    private Set<String> tokenBlacklist = new HashSet<>();
 
     public JwtTokenProvider(@Value("${spring.jwt.secret-key}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
@@ -30,10 +34,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String extractSubject(String accessToken) {
-        Claims claims = parseClaims(accessToken);
-        return claims.getSubject();
-    }
 
     private Claims parseClaims(String accessToken) {
         try {
@@ -47,10 +47,23 @@ public class JwtTokenProvider {
         }
     }
 
-    public String regenerateToken(String subject) {
-        // 토큰의 유효기간을 설정합니다. 예를 들어, 1시간 후로 설정할 수 있습니다.
-        Date expiredAt = new Date(System.currentTimeMillis() + 3600000); // 1시간 후
+    public void addToBlacklist(String token) {
+        tokenBlacklist.add(token);
+    }
 
-        return generate(subject, expiredAt);
+    public boolean isBlacklisted(String token) {
+        return tokenBlacklist.contains(token);
+    }
+
+
+    public String extractSubject(String accessToken) throws InvalidTokenException {
+        try {
+            Claims claims = parseClaims(accessToken);
+            return claims.getSubject();
+        } catch (ExpiredJwtException e) {
+            throw new InvalidTokenException("Token has expired", e);
+        } catch (Exception e) {
+            throw new InvalidTokenException("Invalid token", e);
+        }
     }
 }
